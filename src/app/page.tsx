@@ -39,17 +39,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="observer-brief shell" aria-labelledby="observer-heading">
-        <div className="observer-brief__portrait" aria-label="Author portrait placeholder"><span>Portrait<br />to add</span></div>
-        <div className="observer-brief__copy">
-          <p className="eyebrow">Behind the Observer</p>
-          <h2 id="observer-heading">Looking closer at the messages around us.</h2>
-          <p>I started this blog with a simple thought: organisations are talking to us constantly, even when we do not consciously recognise what we are seeing as corporate communication.</p>
-          <p>This project is my attempt to stop, observe and look at those messages more closely.</p>
-        </div>
-        <p className="observer-brief__note">A personal communications field journal. <span>↙</span></p>
-      </section>
-
       <PullQuote />
     </main>
   );
