@@ -12,11 +12,6 @@ export function Footer() {
           <Link href="/">Home</Link>
           <Link href="/#field-notes">Field Notes</Link>
         </nav>
-        <div className="footer__social" aria-label="Social media">
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">IN</a>
-          <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X">X</a>
-        </div>
       </div>
       <div className="footer__base shell">
         <span>© 2026 The Communications Observer.</span><span>Designed with purpose.</span>

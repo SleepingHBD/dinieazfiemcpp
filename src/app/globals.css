@@ -42,12 +42,6 @@ img { display: block; }
 .site-header { position: sticky; top: -38px; z-index: 30; border-bottom: 1px solid var(--line); }
 .utility-bar { background: var(--green); color: var(--paper); }
 .utility-bar__inner { min-height: 38px; display: flex; align-items: center; justify-content: space-between; font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; }
-.social-links { display: flex; align-items: center; gap: 1rem; }
-.social-links a { display: grid; place-items: center; opacity: .82; transition: opacity .2s, color .2s; }
-.social-links a:hover { color: #efb493; opacity: 1; }
-.social-links svg { width: 14px; height: 14px; }
-.social-x { font-size: .78rem; font-weight: 600; }
-
 .nav-wrap { background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); }
 .main-nav { min-height: 58px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .nav-home { font-family: var(--serif); color: var(--green); font-size: 1.35rem; font-weight: 600; letter-spacing: .02em; }
@@ -152,7 +146,6 @@ img { display: block; }
 @media (max-width: 520px) {
   .shell { width: min(100% - 24px, 1440px); }
   .utility-bar__inner > span { letter-spacing: .11em; font-size: .56rem; }
-  .utility-bar .social-links { gap: .7rem; }
   .masthead { padding-block: 2rem 1.4rem; }
   .masthead__grid { grid-template-columns: 1fr; }
   .issue-stamp { display: flex; justify-content: space-between; padding-top: .35rem; }
@@ -580,7 +573,7 @@ img { display: block; }
 
 .footer__simple {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(2rem, 6vw, 6rem);
   padding-block: clamp(3.5rem, 6vw, 5.5rem);
@@ -617,45 +610,11 @@ img { display: block; }
   color: #efb493;
 }
 
-.footer__social {
-  display: flex;
-  gap: .6rem;
-}
-
-.footer__social a {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(243,239,230,.36);
-  font-size: .58rem;
-  font-weight: 600;
-  transition: border-color .2s, color .2s;
-}
-
-.footer__social a:hover {
-  border-color: #ef835b;
-  color: #efb493;
-}
-
 @media (max-width: 900px) {
   .article-body {
     max-width: 780px;
   }
 
-  .footer__simple {
-    grid-template-columns: 1fr auto;
-  }
-
-  .footer__social {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .footer__simple nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
 }
 
 @media (max-width: 620px) {
@@ -677,7 +636,6 @@ img { display: block; }
     gap: 2rem;
   }
 
-  .footer__social,
   .footer__simple nav {
     grid-column: 1;
     grid-row: auto;
