@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import "@fontsource/cormorant-garamond/400.css";
 import "@fontsource/cormorant-garamond/500.css";
 import "@fontsource/cormorant-garamond/600.css";
@@ -8,6 +9,7 @@ import "@fontsource/dm-sans/600.css";
 import "@fontsource/caveat/500.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { assetPath } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,5 +34,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><Header />{children}<Footer /></body></html>;
+  const paperTextureStyle = {
+    "--paper-texture-image": `url("${assetPath("/images/archive-paper-texture.webp")}")`,
+  } as CSSProperties;
+
+  return <html lang="en"><body style={paperTextureStyle}><Header />{children}<Footer /></body></html>;
 }
