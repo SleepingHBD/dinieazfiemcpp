@@ -1,34 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { FieldNoteCard } from "@/components/FieldNoteCard";
 import { Masthead } from "@/components/Masthead";
 import { PullQuote } from "@/components/PullQuote";
 import { articles } from "@/data/articles";
-import { assetPath } from "@/lib/site";
 
 export default function Home() {
   return (
     <main id="main-content">
       <Masthead />
-      <section className="featured shell" aria-labelledby="featured-title">
-        <div className="featured__copy reveal">
-          <p className="eyebrow">Featured analysis</p>
-          <h1 id="featured-title">When Corporate Purpose Becomes Corporate Performance</h1>
-          <p className="featured__dek">A personal examination of how brands communicate purpose, authenticity and responsibility — and whether audiences believe it.</p>
-          <p className="meta featured__meta"><span>22.09.26</span><span>Branding &amp; Purpose</span><span>7 min read</span></p>
-          <Link className="text-link" href="/blog/patagonia-corporate-storytelling">Read the analysis <ArrowUpRight aria-hidden="true" /></Link>
-        </div>
-        <div className="featured__visual reveal reveal--delay">
-          <div className="image-frame">
-            <Image src={assetPath("/images/featured-purpose.webp")} alt="Communications professionals annotating environmental campaign materials beside a forest" fill loading="eager" fetchPriority="high" sizes="(max-width: 900px) 100vw, 62vw" />
-          </div>
-          <aside className="sticky-note" aria-label="Observer note"><span>Purpose-led messaging</span><em>or reputation insurance?</em></aside>
-          <span className="scribble-arrow" aria-hidden="true">↘</span>
-          <p className="photo-caption">Field study / Corporate purpose <span>01</span></p>
-        </div>
-      </section>
-
       <section className="field-notes home-field-notes shell" id="field-notes" aria-labelledby="field-notes-heading">
         <header className="section-heading">
           <div><p className="eyebrow">Dispatches from the journal</p><h2 id="field-notes-heading">Field Notes</h2></div>
