@@ -17,15 +17,37 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
-  background: var(--paper);
+  background-color: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
-  background-image: radial-gradient(rgba(11, 51, 39, 0.035) 0.65px, transparent 0.65px), linear-gradient(90deg, rgba(255,255,255,.2), transparent 55%);
-  background-size: 5px 5px, 100% 100%;
+  background-image:
+    radial-gradient(ellipse at 16% 9%, rgba(255, 255, 255, .42), transparent 38%),
+    radial-gradient(ellipse at 84% 76%, rgba(105, 75, 39, .045), transparent 43%),
+    repeating-linear-gradient(92deg, rgba(92, 67, 38, .018) 0 1px, transparent 1px 37px);
+  background-size: 100% 100%, 100% 100%, 73px 100%;
 }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(58, 45, 29, .16) 0 .45px, transparent .58px),
+    radial-gradient(circle, rgba(84, 62, 36, .11) 0 .38px, transparent .55px),
+    repeating-linear-gradient(4deg, transparent 0 5px, rgba(83, 60, 34, .026) 6px, transparent 7px 15px),
+    repeating-linear-gradient(87deg, transparent 0 23px, rgba(255, 255, 255, .18) 24px, transparent 25px 52px);
+  background-position: 0 0, 4px 7px, 0 0, 11px 0;
+  background-size: 9px 11px, 13px 17px, 91px 73px, 127px 100%;
+  mix-blend-mode: multiply;
+  opacity: .38;
+}
+body > * { position: relative; z-index: 1; }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { color: inherit; }
@@ -97,6 +119,7 @@ img { display: block; }
 .reveal { animation: reveal .7s both ease-out; }
 @keyframes reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+@media print { body { background: var(--paper); } body::before { display: none; } }
 
 @media (max-width: 1050px) {
   .nav-links { gap: 1rem; }
