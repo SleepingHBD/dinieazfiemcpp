@@ -103,7 +103,10 @@ export const references = {
     author: "Welch, M. and Jackson, P.R.", year: 2007,
     title: "Rethinking internal communication: a stakeholder approach",
     format: "article", publication: "Corporate Communications: An International Journal", details: "12(2), pp. 177–198",
-    links: [{ url: "https://doi.org/10.1108/13563280710744847" }],
+    links: [
+      { label: "DOI", url: "https://doi.org/10.1108/13563280710744847" },
+      { label: "Author-uploaded full text", url: "https://www.researchgate.net/publication/242085269_Rethinking_internal_communication_a_stakeholder_approach" },
+    ],
     accessed: "18 September 2026",
   },
 } satisfies Record<string, Reference>;
