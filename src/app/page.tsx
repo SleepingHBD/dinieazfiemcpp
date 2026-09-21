@@ -10,7 +10,6 @@ export default function Home() {
       <section className="articles home-articles shell" id="articles" aria-labelledby="articles-heading">
         <header className="section-heading">
           <div><p className="eyebrow">Latest analysis</p><h2 id="articles-heading">Articles</h2></div>
-          <p>Four close readings of the messages organisations use to build trust, manage pressure and define who they are.</p>
         </header>
         <div className="articles__grid">
           {articles.map((article, index) => <ArticleCard key={article.slug} article={article} index={index} />)}
