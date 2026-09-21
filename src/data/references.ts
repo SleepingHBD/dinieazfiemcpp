@@ -59,7 +59,10 @@ export const references = {
     author: "Green, M.C. and Brock, T.C.", year: 2000,
     title: "The role of transportation in the persuasiveness of public narratives",
     format: "article", publication: "Journal of Personality and Social Psychology", details: "79(5), pp. 701–721",
-    links: [{ url: "https://doi.org/10.1037/0022-3514.79.5.701" }],
+    links: [
+      { label: "DOI", url: "https://doi.org/10.1037/0022-3514.79.5.701" },
+      { label: "Full-text PDF", url: "https://www.communicationcache.com/uploads/1/0/8/8/10887248/the_role_of_transportation_in_the_persuasiveness_of_public_narratives.pdf" },
+    ],
     accessed: "8 September 2026",
   },
   harrison2015: {

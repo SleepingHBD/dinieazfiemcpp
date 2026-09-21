@@ -10,7 +10,7 @@ Coombs, W.T. (2007) ‘Protecting organization reputations during a crisis: The 
 
 DBS (2026) *Annual Report 2025: A Beacon of Stability*. Singapore: DBS Group Holdings Ltd. Available at: PDF: [https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf](https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf); Interactive edition: [https://www.dbs.com/annualreports/2025/index.html](https://www.dbs.com/annualreports/2025/index.html) (Accessed: 21 September 2026).
 
-Green, M.C. and Brock, T.C. (2000) ‘The role of transportation in the persuasiveness of public narratives’, *Journal of Personality and Social Psychology*, 79(5), pp. 701–721. Available at: [https://doi.org/10.1037/0022-3514.79.5.701](https://doi.org/10.1037/0022-3514.79.5.701) (Accessed: 8 September 2026).
+Green, M.C. and Brock, T.C. (2000) ‘The role of transportation in the persuasiveness of public narratives’, *Journal of Personality and Social Psychology*, 79(5), pp. 701–721. Available at: DOI: [https://doi.org/10.1037/0022-3514.79.5.701](https://doi.org/10.1037/0022-3514.79.5.701); Full-text PDF: [https://www.communicationcache.com/uploads/1/0/8/8/10887248/the_role_of_transportation_in_the_persuasiveness_of_public_narratives.pdf](https://www.communicationcache.com/uploads/1/0/8/8/10887248/the_role_of_transportation_in_the_persuasiveness_of_public_narratives.pdf) (Accessed: 8 September 2026).
 
 Harrison, J.S., Freeman, R.E. and de Abreu, M.C.S. (2015) ‘Stakeholder theory as an ethical approach to effective management: applying the theory to multiple contexts’, *Review of Business Management*, 17(55), pp. 858–869. Available at: [https://doi.org/10.7819/rbgn.v17i55.2647](https://doi.org/10.7819/rbgn.v17i55.2647) (Accessed: 20 September 2026).
 
