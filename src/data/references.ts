@@ -42,7 +42,10 @@ export const references = {
     author: "Coombs, W.T.", year: 2007,
     title: "Protecting organization reputations during a crisis: The development and application of Situational Crisis Communication Theory",
     format: "article", publication: "Corporate Reputation Review", details: "10(3), pp. 163–176",
-    links: [{ url: "https://doi.org/10.1057/palgrave.crr.1550049" }],
+    links: [
+      { label: "DOI", url: "https://doi.org/10.1057/palgrave.crr.1550049" },
+      { label: "Full-text PDF", url: "https://scispace.com/pdf/protecting-organization-reputations-during-a-crisis-the-c56nbgq8xa.pdf" },
+    ],
     accessed: "15 September 2026",
   },
   dbs2026: {

@@ -203,7 +203,7 @@ export const articles: Article[] = [
         type: "theory",
         name: "Situational crisis communication theory",
         citation: "Coombs (2007, pp. 165–166)",
-        sourceUrl: "https://doi.org/10.1057/palgrave.crr.1550049",
+        sourceUrl: "https://scispace.com/pdf/protecting-organization-reputations-during-a-crisis-the-c56nbgq8xa.pdf#page=3",
         runs: [text("SCCT links reputational responses to perceived responsibility, but Coombs (2007, pp. 165–166) puts victims’ needs first. He distinguishes physical-safety instructions from adjusting information that helps people cope. I read the CEO’s acknowledgement of trauma as the latter: concern, not proof of blame or adequate support. That makes passenger uncertainty a test of the response, not a side issue.")],
       },
       {
