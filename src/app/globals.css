@@ -74,9 +74,7 @@ img { display: block; }
 .eyebrow { color: var(--rust); font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .meta { display: flex; flex-wrap: wrap; gap: .55rem 1.3rem; color: var(--green); font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 
-.site-header { position: sticky; top: -38px; z-index: 30; border-bottom: 1px solid var(--line); }
-.utility-bar { background: var(--green); color: var(--paper); }
-.utility-bar__inner { min-height: 38px; display: flex; align-items: center; justify-content: space-between; font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; }
+.site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); }
 .nav-wrap { background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); }
 .main-nav { min-height: 58px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .nav-home { font-family: var(--serif); color: var(--green); font-size: 1.35rem; font-weight: 600; letter-spacing: .02em; }
@@ -156,7 +154,6 @@ img { display: block; }
 }
 @media (max-width: 520px) {
   .shell { width: min(100% - 24px, 1440px); }
-  .utility-bar__inner > span { letter-spacing: .11em; font-size: .56rem; }
   .masthead { padding-block: 2rem 1.4rem; }
   .masthead__grid { grid-template-columns: 1fr; }
   .issue-stamp { display: flex; justify-content: space-between; padding-top: .35rem; }
@@ -440,7 +437,6 @@ img { display: block; }
   .about-note { display: none; }
 }
 @media (max-width: 760px) {
-  .site-header { top: -38px; }
   .homepage-grid { padding-block: 5rem; }
   .section-heading { grid-template-columns: 1fr; }
   .articles__grid, .blog-archive { grid-template-columns: 1fr; }

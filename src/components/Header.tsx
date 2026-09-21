@@ -4,11 +4,6 @@ export function Header() {
   return (
     <header className="site-header">
       <a className="skip-link" href="#main-content">Skip to content</a>
-      <div className="utility-bar">
-        <div className="utility-bar__inner shell">
-          <span>Observing. Analysing. Communicating.</span>
-        </div>
-      </div>
       <div className="nav-wrap">
         <nav className="main-nav shell" aria-label="Primary navigation">
           <Link className="nav-home" href="/" aria-label="The Communications Observer home">TCO.</Link>
