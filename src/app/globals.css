@@ -174,7 +174,7 @@ img { display: block; }
 .section-heading > p { margin: 0; color: #4f504a; font-size: .86rem; line-height: 1.7; }
 .articles__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 4.5rem clamp(2rem, 4vw, 4rem); }
 .field-card { display: grid; grid-template-rows: auto auto 1fr; min-width: 0; }
-.field-card__header { display: grid; grid-template-columns: 74px 1fr; align-items: end; min-height: 94px; padding: 1rem 0; border-block: 1px solid var(--green); }
+.field-card__header { display: grid; grid-template-columns: 74px 1fr; align-items: end; min-height: 94px; padding: 1rem 0; border-top: 1px solid var(--green); }
 .field-card__header .eyebrow { margin: 0; }
 .field-card__number { margin: 0; color: var(--rust); font-family: var(--serif); font-size: 3.6rem; font-style: italic; font-weight: 500; line-height: .8; transition: transform .25s ease; }
 .field-card:hover .field-card__number { transform: translateY(-3px); }
