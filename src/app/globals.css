@@ -182,6 +182,75 @@ img { display: block; }
 .field-card__image::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(243,239,230,.12); pointer-events: none; }
 .field-card__image img { object-fit: cover; filter: saturate(.8) contrast(1.04); transition: transform .75s cubic-bezier(.2,.75,.2,1); }
 .field-card__image:hover img { transform: scale(1.035); }
+.field-card__brand-image {
+  --card-panel: var(--green);
+  --card-ink: var(--paper);
+  --card-accent: var(--rust);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: var(--card-panel);
+  color: var(--card-ink);
+  isolation: isolate;
+}
+.field-card__brand-image::before {
+  content: attr(data-number);
+  position: absolute;
+  z-index: -1;
+  right: -1rem;
+  bottom: -2rem;
+  color: color-mix(in srgb, var(--card-accent) 17%, transparent);
+  font-family: var(--serif);
+  font-size: clamp(9rem, 18vw, 15rem);
+  font-style: italic;
+  line-height: .7;
+}
+.field-card__brand-image::after { display: none; }
+.field-card__brand-kicker,
+.field-card__brand-label {
+  position: relative;
+  z-index: 1;
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.field-card__brand-kicker { grid-column: 1 / -1; color: color-mix(in srgb, var(--card-ink) 72%, transparent); }
+.field-card__brand-logo {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: min(62%, 260px);
+  min-width: 155px;
+  min-height: 112px;
+  padding: 1.25rem;
+  background: #fffaf0;
+}
+.field-card__brand-logo img {
+  width: 100%;
+  height: auto;
+  max-height: 78px;
+  object-fit: contain;
+  filter: none;
+}
+.field-card__brand-image:hover .field-card__brand-logo img { transform: scale(1.035); }
+.field-card__brand-label {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  align-self: end;
+  color: var(--card-accent);
+}
+.field-card__brand-image--field { --card-panel: #102c23; --card-ink: #f3efe6; --card-accent: #d56837; }
+.field-card__brand-image--crisis { --card-panel: #102b4f; --card-ink: #f7f0dc; --card-accent: #d6aa4d; }
+.field-card__brand-image--memo { --card-panel: #eee2d5; --card-ink: #173c31; --card-accent: #b95043; }
+.field-card__brand-image--report { --card-panel: #8e2529; --card-ink: #fff8eb; --card-accent: #f1c26d; }
+.field-card__brand-image--crisis .field-card__brand-logo { background: #102b4f; }
+.field-card__brand-image--memo .field-card__brand-logo { width: 150px; min-width: 0; background: transparent; }
 .field-card__content { display: flex; min-height: 350px; flex-direction: column; padding-top: 1.5rem; }
 .field-card h3 { min-height: 1.9em; margin: 0 0 .9rem; color: var(--green); font-family: var(--serif); font-size: clamp(2.25rem, 3vw, 3.4rem); font-weight: 500; line-height: .95; letter-spacing: -.035em; }
 .field-card h3 a { background-image: linear-gradient(var(--rust), var(--rust)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 2px; transition: background-size .3s ease; }

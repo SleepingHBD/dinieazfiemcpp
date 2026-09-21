@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Article } from "@/data/articles";
 import { assetPath } from "@/lib/site";
 
-const brandVisuals = {
+export const articleBrandVisuals = {
   field: {
     name: "Patagonia",
     label: "Ownership / purpose / environment",
@@ -45,7 +45,7 @@ const brandVisuals = {
 }>;
 
 export function ArticleBrandVisual({ article }: { article: Article }) {
-  const visual = brandVisuals[article.variant];
+  const visual = articleBrandVisuals[article.variant];
   return (
     <div
       className={`brand-visual brand-visual--${article.variant}`}
