@@ -1,6 +1,5 @@
-import Image from "next/image";
 import type { Article } from "@/data/articles";
-import { assetPath } from "@/lib/site";
+import { ArticleBrandVisual } from "@/components/ArticleBrandVisual";
 
 export function ArticleHeader({ article }: { article: Article }) {
   return (
@@ -13,9 +12,9 @@ export function ArticleHeader({ article }: { article: Article }) {
       </div>
       <div className="article-hero__media shell">
         <div className="article-hero__image">
-          <Image src={assetPath(article.heroImage)} alt={article.imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" />
+          <ArticleBrandVisual article={article} />
         </div>
-        <p className="article-hero__caption">Editorial image <span>Fig. {article.articleNumber}</span></p>
+        <p className="article-hero__caption">Brand reference <span>Fig. {article.articleNumber}</span></p>
         <p className="article-hero__note" aria-hidden="true">{article.marginNotes[0]} <span>↙</span></p>
       </div>
     </header>
