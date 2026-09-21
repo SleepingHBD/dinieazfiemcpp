@@ -61,13 +61,13 @@ export function ArticleTemplate({ article }: { article: Article }) {
           </section>
 
           <section className="article-section article-section--takeaway" id="takeaway">
-            <p className="eyebrow">Field note {article.fieldNoteNumber} / Closing thought</p>
+            <p className="eyebrow">Article {article.articleNumber} / Closing thought</p>
             <SectionHeading number="06">The Takeaway</SectionHeading>
             <blockquote>{article.takeaway}</blockquote>
           </section>
 
           <section className="article-sources" aria-labelledby="article-sources-title">
-            <div><p className="eyebrow">Working file</p><h2 id="article-sources-title">Sources for this note</h2></div>
+            <div><p className="eyebrow">Working file</p><h2 id="article-sources-title">Sources for this article</h2></div>
             <ul>{article.sources.map((source) => (
               <li key={source.label}>
                 {source.url ? <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a> : <span>{source.label}</span>}
@@ -78,9 +78,9 @@ export function ArticleTemplate({ article }: { article: Article }) {
         </div>
       </div>
 
-      <nav className="article-navigation shell" aria-label="Adjacent Field Notes">
-        <Link href={`/blog/${previous.slug}`}><ArrowLeft /><span><small>Previous note / {previous.fieldNoteNumber}</small><strong>{previous.title}</strong></span></Link>
-        <Link href={`/blog/${next.slug}`}><span><small>Next note / {next.fieldNoteNumber}</small><strong>{next.title}</strong></span><ArrowRight /></Link>
+      <nav className="article-navigation shell" aria-label="Adjacent articles">
+        <Link href={`/blog/${previous.slug}`}><ArrowLeft /><span><small>Previous article / {previous.articleNumber}</small><strong>{previous.title}</strong></span></Link>
+        <Link href={`/blog/${next.slug}`}><span><small>Next article / {next.articleNumber}</small><strong>{next.title}</strong></span><ArrowRight /></Link>
       </nav>
     </article>
   );

@@ -4,11 +4,11 @@ import { ArrowRight } from "lucide-react";
 import type { Article } from "@/data/articles";
 import { assetPath } from "@/lib/site";
 
-export function FieldNoteCard({ article, index }: { article: Article; index: number }) {
+export function ArticleCard({ article, index }: { article: Article; index: number }) {
   return (
     <article className="field-card">
       <header className="field-card__header">
-        <p className="field-card__number" aria-label={`Field note ${article.fieldNoteNumber}`}>{article.fieldNoteNumber}</p>
+        <p className="field-card__number" aria-label={`Article ${article.articleNumber}`}>{article.articleNumber}</p>
         <div>
           <p className="eyebrow">{article.category}</p>
           <p className="field-card__case">{article.caseStudy}</p>

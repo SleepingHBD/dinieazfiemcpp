@@ -1,4 +1,4 @@
-import { FieldNoteCard } from "@/components/FieldNoteCard";
+import { ArticleCard } from "@/components/ArticleCard";
 import { Masthead } from "@/components/Masthead";
 import { PullQuote } from "@/components/PullQuote";
 import { articles } from "@/data/articles";
@@ -7,13 +7,13 @@ export default function Home() {
   return (
     <main id="main-content">
       <Masthead />
-      <section className="field-notes home-field-notes shell" id="field-notes" aria-labelledby="field-notes-heading">
+      <section className="articles home-articles shell" id="articles" aria-labelledby="articles-heading">
         <header className="section-heading">
-          <div><p className="eyebrow">Dispatches from the journal</p><h2 id="field-notes-heading">Field Notes</h2></div>
+          <div><p className="eyebrow">Latest analysis</p><h2 id="articles-heading">Articles</h2></div>
           <p>Four close readings of the messages organisations use to build trust, manage pressure and define who they are.</p>
         </header>
-        <div className="field-notes__grid">
-          {articles.map((article, index) => <FieldNoteCard key={article.slug} article={article} index={index} />)}
+        <div className="articles__grid">
+          {articles.map((article, index) => <ArticleCard key={article.slug} article={article} index={index} />)}
         </div>
       </section>
 

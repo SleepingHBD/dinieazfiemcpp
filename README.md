@@ -1,6 +1,6 @@
 # The Communications Observer
 
-An editorial-style university project analysing real-world corporate communications. The deliberately focused site contains a magazine front page and four long-form Field Notes.
+An editorial-style university project analysing real-world corporate communications. The deliberately focused site contains a magazine front page and four long-form articles.
 
 ## Routes
 
@@ -36,7 +36,7 @@ Pushing to `main` runs `.github/workflows/deploy.yml`. In the GitHub repository,
 - Article content and metadata: `src/data/articles.ts`
 - Global editorial styles: `src/app/globals.css`
 - Homepage content: `src/app/page.tsx`
-- Reusable Field Note layout: `src/components/ArticleTemplate.tsx`
+- Reusable article layout: `src/components/ArticleTemplate.tsx`
 - Replaceable photography: `public/images/`
 
 Bracketed text such as `[ACADEMIC REFERENCE TO BE ADDED]` is intentionally left as a verification placeholder. Replace all such content before university submission.

@@ -10,7 +10,7 @@ export function Footer() {
         </div>
         <nav aria-label="Footer navigation">
           <Link href="/">Home</Link>
-          <Link href="/#field-notes">Field Notes</Link>
+          <Link href="/#articles">Articles</Link>
         </nav>
       </div>
       <div className="footer__base shell">

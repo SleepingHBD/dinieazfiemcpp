@@ -14,9 +14,9 @@ export function Header() {
           <Link className="nav-home" href="/" aria-label="The Communications Observer home">TCO.</Link>
           <div className="nav-links">
             <Link href="/">Home</Link>
-            <Link href="/#field-notes">Field Notes</Link>
+            <Link href="/#articles">Articles</Link>
           </div>
-          <Link className="nav-issue" href="/#field-notes">Issue 01 / 2026</Link>
+          <Link className="nav-issue" href="/#articles">Issue 01 / 2026</Link>
         </nav>
       </div>
     </header>

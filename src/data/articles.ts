@@ -7,7 +7,7 @@ export interface SourceEntry {
 
 export interface Article {
   slug: string;
-  fieldNoteNumber: string;
+  articleNumber: string;
   title: string;
   subtitle: string;
   category: string;
@@ -36,7 +36,7 @@ export interface Article {
 export const articles: Article[] = [
   {
     slug: "patagonia-corporate-storytelling",
-    fieldNoteNumber: "01",
+    articleNumber: "01",
     title: "When Companies Try to Look Human",
     subtitle: "Corporate Storytelling in Action",
     category: "Corporate Storytelling",
@@ -76,7 +76,7 @@ export const articles: Article[] = [
   },
   {
     slug: "singapore-airlines-crisis-communication",
-    fieldNoteNumber: "02",
+    articleNumber: "02",
     title: "When Things Go Wrong",
     subtitle: "Crisis Communication Under Pressure",
     category: "Crisis Communication",
@@ -116,7 +116,7 @@ export const articles: Article[] = [
   },
   {
     slug: "airbnb-internal-communication",
-    fieldNoteNumber: "03",
+    articleNumber: "03",
     title: "Talking to the People Inside",
     subtitle: "When Employees Become the Most Important Audience",
     category: "Internal Communication",
@@ -156,7 +156,7 @@ export const articles: Article[] = [
   },
   {
     slug: "dbs-stakeholder-communication",
-    fieldNoteNumber: "04",
+    articleNumber: "04",
     title: "When Reporting Becomes Reputation",
     subtitle: "Corporate Reports as Communication",
     category: "Stakeholder Communication",
