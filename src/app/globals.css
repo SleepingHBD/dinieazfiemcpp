@@ -320,11 +320,11 @@ img { display: block; }
 .field-label span { display: block; margin-bottom: .6rem; color: var(--green); font-family: var(--sans); font-size: .62rem; font-style: normal; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
 .article-hero h1 { margin: .4rem 0 0; max-width: 980px; color: var(--green); font-family: var(--serif); font-size: clamp(3.2rem, 6vw, 6.8rem); font-weight: 500; line-height: .84; letter-spacing: -.05em; }
 .article-hero__subtitle { margin: .9rem 0 1.2rem; color: var(--rust); font-family: var(--serif); font-size: clamp(1.3rem, 2vw, 2.15rem); font-style: italic; line-height: 1.05; }
-.article-hero__media { position: relative; padding-bottom: 2.75rem; }
-.article-hero__image { position: relative; height: min(52vw, 560px); overflow: hidden; background: var(--paper-deep); }
+.article-hero__media { position: relative; max-width: 1040px; padding-bottom: 2.75rem; }
+.article-hero__image { position: relative; height: min(40vw, 440px); overflow: hidden; background: var(--paper-deep); }
 .article-hero__image img { object-fit: cover; filter: saturate(.82) contrast(1.05); }
 .article-hero--memo .article-hero__image { width: 82%; margin-left: auto; }
-.article-hero--report .article-hero__image { height: min(48vw, 520px); }
+.article-hero--report .article-hero__image { height: min(38vw, 420px); }
 .article-hero__caption { display: flex; justify-content: space-between; margin: .65rem 0 0; color: #5c5c55; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
 .article-hero__caption span { color: var(--rust); }
 .article-hero__note { position: absolute; z-index: 2; right: 2%; top: -2rem; max-width: 200px; margin: 0; padding: .7rem .85rem; background: var(--highlight); color: var(--green); font-family: var(--hand); font-size: 1.1rem; line-height: 1; transform: rotate(3deg); }
@@ -531,7 +531,7 @@ img { display: block; }
   .article-hero__heading { grid-template-columns: 1fr; padding-bottom: 1.75rem; }
   .field-label { grid-row: auto; display: flex; align-items: baseline; justify-content: space-between; font-size: 2.5rem; }
   .field-label span { margin: 0; }
-  .article-hero__image, .article-hero--report .article-hero__image { height: min(74vw, 360px); min-height: 280px; }
+  .article-hero__image, .article-hero--report .article-hero__image { height: min(68vw, 320px); min-height: 220px; }
   .article-hero--memo .article-hero__image { width: 100%; }
   .article-hero__note { display: none; }
   .article-section { padding-block: 4.5rem; }
