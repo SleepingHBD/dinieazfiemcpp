@@ -118,7 +118,7 @@ img { display: block; }
 
 .masthead { padding-block: clamp(2rem, 4vw, 4.4rem) 2.1rem; border-bottom: 1px solid var(--green); }
 .masthead__grid { display: grid; grid-template-columns: 100px minmax(0, 1fr) 180px; align-items: end; gap: 2rem; }
-.issue-stamp { align-self: start; padding-top: .8rem; border-top: 3px solid var(--rust); color: var(--green); font-size: .66rem; font-weight: 600; letter-spacing: .14em; line-height: 1.8; text-transform: uppercase; }
+.issue-stamp { align-self: start; padding-top: .8rem; border-top: 3px solid var(--rust); color: var(--green); font-size: .66rem; font-weight: 600; letter-spacing: .14em; line-height: 1.8; text-transform: none; }
 .masthead__name { min-width: 0; container-type: inline-size; }
 .masthead__title { margin: 0; color: var(--green); font-family: var(--serif); font-size: 11.6cqi; font-weight: 500; line-height: .65; letter-spacing: -.055em; text-align: center; text-transform: uppercase; }
 .masthead__title .the { display: block; margin: 0 0 .45em; font-family: var(--sans); font-size: .09em; font-weight: 600; letter-spacing: .65em; }
@@ -530,7 +530,7 @@ img { display: block; }
   font-size: .61rem;
   font-weight: 600;
   letter-spacing: .13em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .home-articles {

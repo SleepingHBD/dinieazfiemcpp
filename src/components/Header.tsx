@@ -16,7 +16,7 @@ export function Header() {
             <Link href="/">Home</Link>
             <Link href="/#articles">Articles</Link>
           </div>
-          <Link className="nav-issue" href="/#articles">Issue 01 / 2026</Link>
+          <Link className="nav-issue" href="/#articles">Issue #1</Link>
         </nav>
       </div>
     </header>
