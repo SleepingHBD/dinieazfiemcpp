@@ -20,24 +20,34 @@ export type ArticleBodyBlock =
 export type ArticleFeature = (
   | {
       type: "ownership";
-      headline: string;
+      company: string;
+      period: string;
       routes: { title: string; detail: string }[];
       statistics: { value: string; label: string }[];
     }
   | {
       type: "timeline";
-      steps: { date: string; title: string; detail: string }[];
+      steps: {
+        date: string;
+        dateTime: string;
+        title: string;
+        detail?: string;
+        perspective: "event" | "airline" | "passenger";
+        later?: boolean;
+      }[];
     }
   | {
       type: "memo";
       quote: string;
-      supports: string[];
+      attribution: string;
+      supportGroups: { title: string; items: string[] }[];
     }
   | {
       type: "report";
       value: string;
       label: string;
       stakeholders: string[];
+      focusCategory: string;
       note: string;
     }
 ) & { sources: SourceEntry[] };
@@ -129,7 +139,8 @@ export const articles: Article[] = [
         { label: "Ownership announcement (2022)", url: "https://www.patagonia.com/ownership/" },
         { label: "Progress report (2025)", url: "https://www.patagonia.com/progress-report/" },
       ],
-      headline: "Earth is now our only shareholder.",
+      company: "Patagonia",
+      period: "Ownership, 2022",
       routes: [
         { title: "Patagonia Purpose Trust", detail: "Voting shares" },
         { title: "Holdfast Collective", detail: "Non-voting shares" },
@@ -214,15 +225,15 @@ export const articles: Article[] = [
     feature: {
       type: "timeline",
       sources: [
-        { label: "CEO apology / Mothership", url: "https://mothership.sg/2024/05/sia-ceo-sq321-apology/" },
-        { label: "Passenger account / CNA", url: "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606" },
-        { label: "AGM presentation / slide 5", url: "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf#page=5" },
+        { label: "Mothership", url: "https://mothership.sg/2024/05/sia-ceo-sq321-apology/" },
+        { label: "CNA", url: "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606" },
+        { label: "SIA AGM, slide 5", url: "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf#page=5" },
       ],
       steps: [
-        { date: "21 May 2024", title: "Incident", detail: "SQ321 turbulence incident" },
-        { date: "22 May 2024", title: "Public apology", detail: "CEO video acknowledges passengers’ traumatic experience" },
-        { date: "23 May 2024", title: "Passenger account", detail: "CNA reports concerns about access to information" },
-        { date: "29 July 2024", title: "Later account", detail: "AGM presentation outlines support and procedure reviews" },
+        { date: "21 May 2024", dateTime: "2024-05-21", title: "SQ321 turbulence", perspective: "event" },
+        { date: "22 May 2024", dateTime: "2024-05-22", title: "CEO apology", detail: "Acknowledgement and a promise of assistance", perspective: "airline" },
+        { date: "23 May 2024", dateTime: "2024-05-23", title: "Information concerns", detail: "CNA reports a passenger’s unanswered questions", perspective: "passenger" },
+        { date: "29 July 2024", dateTime: "2024-07-29", title: "Later: AGM update", detail: "Support and procedure reviews outlined", perspective: "airline", later: true },
       ],
     },
     marginNotes: ["An apology is not the whole response.", "Who needs information first?"],
@@ -295,7 +306,11 @@ export const articles: Article[] = [
       type: "memo",
       sources: [{ label: "Employee letter / 5 May 2020", url: "https://news.airbnb.com/a-message-from-co-founder-and-ceo-brian-chesky" }],
       quote: "Please know this is not your fault.",
-      supports: ["Severance", "Healthcare", "Job-search support", "Individual conversations", "Company Q&A"],
+      attribution: "Brian Chesky · Employee letter, 5 May 2020",
+      supportGroups: [
+        { title: "Practical support", items: ["Severance", "Healthcare", "Job-search support"] },
+        { title: "Questions & conversations", items: ["Individual conversations", "Company Q&A"] },
+      ],
     },
     marginNotes: ["Employees first. Public second.", "Empathy needs practical detail."],
     sources: [
@@ -366,9 +381,10 @@ export const articles: Article[] = [
     feature: {
       type: "report",
       sources: [{ label: "DBS Annual Report 2025 / p. 72", url: "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf#page=38" }],
-      value: "SGD14.9bn",
+      value: "SGD 14.9bn",
       label: "Financial value created during 2025",
       stakeholders: ["Employees", "Society", "Shareholders", "Retained earnings"],
+      focusCategory: "Society",
       note: "“Society” includes taxes and money set aside for corporate social responsibility.",
     },
     marginNotes: ["Read the label beneath the number.", "Who is this page reassuring?"],
