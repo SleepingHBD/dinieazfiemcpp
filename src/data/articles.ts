@@ -346,7 +346,7 @@ export const articles: Article[] = [
         type: "theory",
         name: "Stakeholder theory",
         citation: "Harrison, Freeman and de Abreu (2015, p. 859)",
-        sourceUrl: "https://rbgn.fecap.br/RBGN/article/download/2647/pdf/20848#page=2",
+        sourceUrl: "https://www.scielo.br/j/rbgn/a/sWQfK377tPNwVLMWt46zhsv/?format=pdf&lang=en#page=2",
         runs: [text("Stakeholder theory asks how a business serves groups’ interests and wellbeing, not just shareholders’ returns (Harrison, Freeman and de Abreu, 2015, p. 859). For DBS, putting taxes and CSR allocations under “society” makes financial contributions visible, but does not show how different communities benefit. I would look for evidence of outcomes and fair treatment, not infer them from the total.")],
       },
       {

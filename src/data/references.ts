@@ -69,7 +69,10 @@ export const references = {
     author: "Harrison, J.S., Freeman, R.E. and de Abreu, M.C.S.", year: 2015,
     title: "Stakeholder theory as an ethical approach to effective management: applying the theory to multiple contexts",
     format: "article", publication: "Review of Business Management", details: "17(55), pp. 858–869",
-    links: [{ url: "https://doi.org/10.7819/rbgn.v17i55.2647" }],
+    links: [
+      { label: "DOI", url: "https://doi.org/10.7819/rbgn.v17i55.2647" },
+      { label: "Full-text PDF", url: "https://www.scielo.br/j/rbgn/a/sWQfK377tPNwVLMWt46zhsv/?format=pdf&lang=en" },
+    ],
     accessed: "20 September 2026",
   },
   patagonia2011: {
