@@ -23,9 +23,9 @@ export const articleBrandVisuals = {
     name: "Airbnb",
     label: "Employee letter / May 2020",
     detail: "Internal communication",
-    logo: "/images/logos/airbnb-belo.svg",
-    width: 142,
-    height: 152,
+    logo: "/images/logos/airbnb-lockup.svg",
+    width: 3490,
+    height: 1080,
   },
   report: {
     name: "DBS",

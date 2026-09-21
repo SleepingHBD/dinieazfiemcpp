@@ -221,7 +221,9 @@ img { display: block; }
 .field-card__brand-logo {
   position: relative;
   z-index: 1;
+  grid-column: 1 / -1;
   align-self: center;
+  justify-self: center;
   display: grid;
   place-items: center;
   width: min(62%, 260px);
@@ -250,7 +252,7 @@ img { display: block; }
 .field-card__brand-image--memo { --card-panel: #eee2d5; --card-ink: #173c31; --card-accent: #b95043; }
 .field-card__brand-image--report { --card-panel: #8e2529; --card-ink: #fff8eb; --card-accent: #f1c26d; }
 .field-card__brand-image--crisis .field-card__brand-logo { background: #102b4f; }
-.field-card__brand-image--memo .field-card__brand-logo { width: 150px; min-width: 0; background: transparent; }
+.field-card__brand-image--memo .field-card__brand-logo { background: transparent; }
 .field-card__content { display: flex; min-height: 350px; flex-direction: column; padding-top: 1.5rem; }
 .field-card h3 { min-height: 1.9em; margin: 0 0 .9rem; color: var(--green); font-family: var(--serif); font-size: clamp(2.25rem, 3vw, 3.4rem); font-weight: 500; line-height: .95; letter-spacing: -.035em; }
 .field-card h3 a { background-image: linear-gradient(var(--rust), var(--rust)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 2px; transition: background-size .3s ease; }
