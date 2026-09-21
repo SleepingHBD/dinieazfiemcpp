@@ -1,0 +1,40 @@
+.artwork {
+  --mount: #f7f3e9;
+  --logo-width: 250px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.mount {
+  display: grid;
+  place-items: center;
+  width: min(72%, 390px);
+  height: 136px;
+  padding: 24px 30px;
+  background: var(--mount);
+}
+
+.mount img {
+  width: min(100%, var(--logo-width));
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  filter: none;
+  transition: transform .35s ease;
+}
+
+a:hover .mount img { transform: scale(1.035); }
+.crisis { --logo-width: 242px; }
+.memo { --logo-width: 218px; }
+.report { --logo-width: 214px; }
+
+@media (max-width: 520px) {
+  .artwork { padding: 20px; }
+  .mount { width: 85%; height: 118px; padding: 22px; }
+  .mount img { max-height: 76px; }
+}

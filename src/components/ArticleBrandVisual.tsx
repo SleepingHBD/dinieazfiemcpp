@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Article } from "@/data/articles";
 import { assetPath } from "@/lib/site";
+import styles from "./ArticleBrandVisual.module.css";
 
 export const articleBrandVisuals = {
   field: {
@@ -15,9 +16,11 @@ export const articleBrandVisuals = {
     name: "Singapore Airlines",
     label: "SQ321 / response under pressure",
     detail: "Crisis communication",
-    logo: "/images/logos/singapore-airlines.svg",
-    width: 496,
-    height: 184,
+    // Light-background asset supplied on Singapore Airlines' official website:
+    // https://singaporeairlines.com/content/dam/sia/web-assets/images/ppsclub-krisflyer/kf-promo/kfmilesparadise/Singapore_Airlines_Logo_2.svg
+    logo: "/images/logos/singapore-airlines-light.svg",
+    width: 350,
+    height: 128,
   },
   memo: {
     name: "Airbnb",
@@ -44,36 +47,18 @@ export const articleBrandVisuals = {
   height: number;
 }>;
 
-export function ArticleBrandVisual({ article }: { article: Article }) {
+export function ArticleBrandVisual({ article, eager = false }: { article: Article; eager?: boolean }) {
   const visual = articleBrandVisuals[article.variant];
   return (
-    <div
-      className={`brand-visual brand-visual--${article.variant}`}
-    >
-      <div className="brand-visual__topline">
-        <span>Case study / {article.articleNumber}</span>
-        <span>The Communications Observer</span>
-      </div>
-
-      <div className="brand-visual__symbol">
+    <div className={`${styles.artwork} ${styles[article.variant]}`}>
+      <div className={styles.mount}>
         <Image
           src={assetPath(visual.logo)}
           alt={`${visual.name} official logo`}
           width={visual.width}
           height={visual.height}
+          loading={eager ? "eager" : "lazy"}
         />
-      </div>
-
-      <div className="brand-visual__identity">
-        <p>{visual.detail}</p>
-        <strong>{visual.name}</strong>
-        <span>{visual.label}</span>
-      </div>
-
-      <div className="brand-visual__reference" aria-hidden="true">
-        <span>{article.articleNumber}</span>
-        <i />
-        <small>Observed / analysed</small>
       </div>
     </div>
   );

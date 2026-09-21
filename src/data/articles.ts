@@ -17,7 +17,7 @@ export type ArticleBodyBlock =
   | { type: "theory"; name: string; citation: string; sourceUrl: string; runs: TextRun[] }
   | { type: "feature" };
 
-export type ArticleFeature =
+export type ArticleFeature = (
   | {
       type: "ownership";
       headline: string;
@@ -39,7 +39,8 @@ export type ArticleFeature =
       label: string;
       stakeholders: string[];
       note: string;
-    };
+    }
+) & { sources: SourceEntry[] };
 
 export interface Article {
   slug: string;
@@ -124,6 +125,10 @@ export const articles: Article[] = [
     ],
     feature: {
       type: "ownership",
+      sources: [
+        { label: "Ownership announcement (2022)", url: "https://www.patagonia.com/ownership/" },
+        { label: "Progress report (2025)", url: "https://www.patagonia.com/progress-report/" },
+      ],
       headline: "Earth is now our only shareholder.",
       routes: [
         { title: "Patagonia Purpose Trust", detail: "Voting shares" },
@@ -208,6 +213,11 @@ export const articles: Article[] = [
     ],
     feature: {
       type: "timeline",
+      sources: [
+        { label: "CEO apology / Mothership", url: "https://mothership.sg/2024/05/sia-ceo-sq321-apology/" },
+        { label: "Passenger account / CNA", url: "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606" },
+        { label: "AGM presentation / slide 5", url: "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf#page=5" },
+      ],
       steps: [
         { date: "21 May 2024", title: "Incident", detail: "SQ321 turbulence incident" },
         { date: "22 May 2024", title: "Public apology", detail: "CEO video acknowledges passengers’ traumatic experience" },
@@ -283,6 +293,7 @@ export const articles: Article[] = [
     ],
     feature: {
       type: "memo",
+      sources: [{ label: "Employee letter / 5 May 2020", url: "https://news.airbnb.com/a-message-from-co-founder-and-ceo-brian-chesky" }],
       quote: "Please know this is not your fault.",
       supports: ["Severance", "Healthcare", "Job-search support", "Individual conversations", "Company Q&A"],
     },
@@ -354,6 +365,7 @@ export const articles: Article[] = [
     ],
     feature: {
       type: "report",
+      sources: [{ label: "DBS Annual Report 2025 / p. 72", url: "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf#page=38" }],
       value: "SGD14.9bn",
       label: "Financial value created during 2025",
       stakeholders: ["Employees", "Society", "Shareholders", "Retained earnings"],
