@@ -27,6 +27,12 @@ pnpm check
 
 The production build is a static export in `out/`.
 
+### Responsive checks
+
+Check the homepage and all four articles at 320, 390, 640, 768, 820, 1024 and 1440px widths, plus phone landscape. Home and Articles should stay visible with at least 44px-high tap targets. Article cards stack at 640px and below; figures reflow for narrow screens, and adjacent-article links stack at 520px and below.
+
+When adjusting the navigation height, update `--header-height` in `src/app/globals.css` so anchor offsets and the reading-progress bar stay aligned. Check long reference links for horizontal overflow, keyboard focus visibility, and the Articles anchor below the sticky header. Browser viewport checks do not replace a final check on a real phone or tablet.
+
 ## GitHub Pages
 
 Pushing to `main` runs `.github/workflows/deploy.yml`. In the GitHub repository, set **Settings → Pages → Source** to **GitHub Actions**. The workflow builds with the repository base path and deploys the `out/` directory.

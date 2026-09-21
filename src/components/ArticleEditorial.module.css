@@ -1,5 +1,5 @@
 .body { width: min(100% - 48px, 760px); margin-inline: auto; }
-.copy { padding-block: 28px 30px; }
+.copy { padding-block: 28px 30px; overflow-wrap: anywhere; }
 .paragraph, .takeaway > p { margin: 0 0 18px; color: #30352f; font-family: var(--sans); font-size: 1.0625rem; line-height: 1.75; }
 .copy a:not(.citation):not(.evidenceSources a) { text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .copy a:hover { color: var(--rust); }
@@ -10,7 +10,7 @@
 .label { margin: 0; color: var(--rust); font-size: .64rem; font-weight: 600; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
 .theory { margin: 26px 0; padding: 22px 26px; border-left: 3px solid var(--green); background: #e9e4d8; }
 .theoryHeading h2 { margin: 5px 0 9px; color: var(--green); font-family: var(--serif); font-size: 1.85rem; font-weight: 500; line-height: 1.05; }
-.citation { display: inline-flex; align-items: baseline; gap: 7px; color: var(--green); font-size: .76rem; line-height: 1.5; text-decoration: underline; text-decoration-color: #718071; text-underline-offset: 3px; }
+.citation { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: var(--green); font-size: .8125rem; line-height: 1.5; text-decoration: underline; text-decoration-color: #718071; text-underline-offset: 3px; }
 .citation svg { flex-shrink: 0; width: 12px; height: 12px; }
 .theory p:not(.label) { margin: 12px 0 0; color: #30352f; font-size: 1rem; line-height: 1.7; }
 .takeaway { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--green); }
@@ -26,7 +26,7 @@
 .evidenceFooter { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-inline: 20px; padding-block: 10px 12px; border-top: 1px solid var(--line); }
 .sourceLabel { color: #586354; font-size: .7rem; line-height: 1.6; }
 .evidenceSources { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-.evidenceSources a { display: inline-flex; align-items: center; gap: 3px; color: #475548; font-size: .72rem; line-height: 1.6; text-decoration: underline; text-decoration-color: #abb0a1; text-underline-offset: 3px; }
+.evidenceSources a { display: inline-flex; align-items: center; gap: 3px; min-width: 44px; min-height: 44px; color: #475548; font-size: .8125rem; line-height: 1.6; text-decoration: underline; text-decoration-color: #abb0a1; text-underline-offset: 3px; }
 .evidenceSources svg { width: 11px; height: 11px; flex-shrink: 0; }
 .annotation { color: #a5401d; font-family: var(--hand); font-size: 1.15rem; line-height: 1.15; }
 
@@ -109,9 +109,13 @@
 @media (max-width: 820px) {
   .body { width: min(100% - 32px, 760px); }
   .navigation { width: calc(100% - 32px); }
+  .detailLabel, .sourceLabel, .figureNote, .quoteAttribution, .perspective { font-size: .8125rem; }
+  .ownershipRoutes dt, .statisticPair dt, .timeline p, .memoSupport li, .reportValue > span, .reportNote p, .referenceList li { font-size: .875rem; }
+  .timelineDate { font-size: .875rem; }
 }
 
 @media (max-width: 600px) {
+  .copy { padding-block: 22px 26px; }
   .theory { padding: 18px; }
   .theoryHeading h2 { font-size: 1.65rem; }
   .evidenceHeading, .evidenceFooter, .statistics { margin-inline: 16px; }
@@ -142,11 +146,27 @@
   .navigation strong { font-size: 1.2rem; }
 }
 
+@media (min-width: 601px) and (max-width: 820px) {
+  /* Two rows give tablet timelines room for readable labels and descriptions. */
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+  .timeline .laterStep { margin-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .navigation { grid-template-columns: minmax(0, 1fr); margin-bottom: 24px; }
+  .navigation > a, .navigation > a:last-child { padding: 16px 0; gap: 12px; }
+  .navigation > a:last-child { border-left: 0; border-top: 1px solid var(--line); }
+  .navigation strong { font-size: 1.35rem; line-height: 1.15; }
+  .navigation small { font-size: .7rem; }
+}
+
 @media (max-width: 420px) {
+  .memoSupport { grid-template-columns: minmax(0, 1fr); }
+  .memoSupport > div + div { padding-top: 12px; border-top: 1px solid var(--line); }
   /* Let the event text use the full measure instead of a cramped side column. */
   .timeline li { grid-template-columns: minmax(0, 1fr) auto; gap: 5px 8px; }
   .timelineContent { display: contents; }
-  .timeline .perspective { grid-column: 2; grid-row: 1; align-self: center; margin: 0; font-size: .7rem; text-align: right; }
+  .timeline .perspective { grid-column: 2; grid-row: 1; align-self: center; margin: 0; font-size: .75rem; text-align: right; }
   .timelineContent > strong, .timelineContent > p { grid-column: 1 / -1; }
   .timeline p { margin: 0; }
 }

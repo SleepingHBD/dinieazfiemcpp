@@ -13,7 +13,7 @@
 .mount {
   display: grid;
   place-items: center;
-  width: min(72%, 390px);
+  width: min(100%, 390px);
   height: 136px;
   padding: 24px 30px;
 }
@@ -27,13 +27,15 @@
   transition: transform .35s ease;
 }
 
-a:hover .mount img { transform: scale(1.035); }
+@media (hover: hover) {
+  a:hover .mount img { transform: scale(1.035); }
+}
 .crisis { --logo-width: 242px; }
 .memo { --logo-width: 218px; }
 .report { --logo-width: 214px; }
 
 @media (max-width: 520px) {
   .artwork { padding: 20px; }
-  .mount { width: 85%; height: 118px; padding: 22px; }
+  .mount { height: auto; min-height: 96px; padding: 12px; }
   .mount img { max-height: 76px; }
 }
