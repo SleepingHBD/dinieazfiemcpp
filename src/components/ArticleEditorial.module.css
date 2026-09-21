@@ -92,11 +92,10 @@
 
 .sources { padding-block: 22px 32px; border-top: 1px solid var(--line); }
 .sources h2 { margin: 5px 0 16px; color: var(--green); font-family: var(--serif); font-size: 1.7rem; font-weight: 500; line-height: 1.1; }
-.sources ol { margin: 0; padding: 0; list-style: none; }
-.sources li { display: grid; grid-template-columns: 24px 1fr 14px; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); color: #555c52; font-size: .76rem; line-height: 1.65; overflow-wrap: anywhere; }
-.sources li > span { color: var(--rust); font-family: var(--serif); font-size: 1rem; font-style: italic; }
-.sources li a:hover { color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
-.sources svg { width: 13px; height: 13px; margin-top: 3px; color: var(--rust); }
+.referenceList { margin: 0; padding: 0; list-style: none; }
+.referenceList li { margin: 0; padding: 12px 0 12px 18px; border-top: 1px solid var(--line); color: #444d42; font-size: .8rem; line-height: 1.65; text-indent: -18px; overflow-wrap: anywhere; }
+.referenceList a { color: var(--green); text-decoration: underline; text-decoration-color: #a4ad9c; text-underline-offset: 3px; }
+.referenceList a:hover { color: var(--rust); text-decoration-color: var(--rust); }
 .navigation { display: grid; grid-template-columns: 1fr 1fr; width: min(100% - 48px, 880px); margin: 0 auto 36px; border-block: 1px solid var(--green); }
 .navigation > a { display: flex; align-items: center; gap: 16px; padding: 22px 20px 22px 0; color: var(--green); }
 .navigation > a:last-child { justify-content: flex-end; padding: 22px 0 22px 20px; border-left: 1px solid var(--line); text-align: right; }
@@ -139,8 +138,6 @@
   .reportValue > span { max-width: none; }
   .stakeholders { padding-top: 12px; border-top: 1px solid var(--line); }
   .reportNote .annotation { display: none; }
-  .sources li { grid-template-columns: 18px 1fr; gap: 10px; }
-  .sources li > svg { display: none; }
   .navigation > a, .navigation > a:last-child { padding: 18px 10px; gap: 8px; }
   .navigation strong { font-size: 1.2rem; }
 }

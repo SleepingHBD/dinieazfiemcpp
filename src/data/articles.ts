@@ -1,3 +1,5 @@
+import type { ReferenceId } from "./references";
+
 export type ArticleVariant = "field" | "crisis" | "memo" | "report";
 
 export interface SourceEntry {
@@ -68,7 +70,7 @@ export interface Article {
   body: ArticleBodyBlock[];
   feature: ArticleFeature;
   marginNotes: string[];
-  sources: SourceEntry[];
+  referenceIds: ReferenceId[];
 }
 
 const text = (value: string): TextRun => ({ text: value });
@@ -105,14 +107,14 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        runs: [text("The headline makes a complicated arrangement approachable. The founder’s letter then explains his search for a way to protect the company’s values, including why he rejected selling the business or taking it public (Chouinard, 2022). Rather than just announcing a decision, he takes readers through the problem behind it.")],
+        runs: [text("The founder’s letter turns a legal arrangement into a problem and its resolution: Chouinard rejects selling the business or taking it public to protect its values (Chouinard, 2022).")],
       },
       {
         type: "theory",
         name: "Narrative transportation",
         citation: "Green and Brock (2000, pp. 701–702)",
         sourceUrl: "https://www.communicationcache.com/uploads/1/0/8/8/10887248/the_role_of_transportation_in_the_persuasiveness_of_public_narratives.pdf",
-        runs: [text("Green and Brock’s (2000, pp. 701–702) concept of narrative transportation helps explain the potential appeal. It describes becoming absorbed in a story through attention, emotion and mental imagery. I can see how following Chouinard’s dilemma could draw readers into his perspective. That is a possible explanation of its persuasiveness, though, not evidence that Patagonia’s readers actually experienced it.")],
+        runs: [text("Green and Brock (2000, pp. 701–702) describe narrative transportation as absorption through attention, emotion and imagery, which may reduce counterarguing. Following Chouinard’s dilemma invites readers to identify with his priorities and accept his solution. I can see how that could make purpose feel credible before the ownership mechanics are examined. Reader evidence would be needed to show that effect; the story alone cannot establish authenticity.")],
       },
       {
         type: "paragraph",
@@ -126,7 +128,16 @@ export const articles: Article[] = [
       { type: "feature" },
       {
         type: "paragraph",
-        runs: [text("Including both figures makes the report more useful to me than a list of achievements. It gives readers something to question, although Patagonia still chooses what to disclose.")],
+        runs: [text("The repair and end-of-life figures let me test the purpose story against reported actions, rather than treat narrative appeal as proof. They invite scrutiny, although Patagonia still selects the evidence.")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          strong("Paid versus non-paid communication matters here. "),
+          text("Patagonia’s 2011 "),
+          link("“Don’t Buy This Jacket”", "https://www.patagonia.com/stories/planet/activism/dont-buy-this-jacket-black-friday-and-the-new-york-times/story-18615.html"),
+          text(" advertisement used paid space in "), emphasis("The New York Times"), text(" (Patagonia, 2011). The letter and report use owned channels; non-paid placement does not mean cost-free production. The ad could reach readers beyond Patagonia’s website, but even its anti-consumption message promotes the brand. Owned channels offer detail, but neither format guarantees trust."),
+        ],
       },
       {
         type: "conclusion",
@@ -151,11 +162,7 @@ export const articles: Article[] = [
       ],
     },
     marginNotes: ["Who actually owns the company?", "Story first. Evidence next."],
-    sources: [
-      { label: "Chouinard, Y. (2022) ‘Earth is now our only shareholder’, Patagonia, 14 September. Accessed 21 September 2026.", url: "https://www.patagonia.com/ownership/" },
-      { label: "Green, M.C. and Brock, T.C. (2000) ‘The role of transportation in the persuasiveness of public narratives’, Journal of Personality and Social Psychology, 79(5), pp. 701–721. doi: 10.1037/0022-3514.79.5.701. Accessed 21 September 2026.", url: "https://doi.org/10.1037/0022-3514.79.5.701" },
-      { label: "Patagonia (2025) Work in Progress Report 2025. Accessed 21 September 2026.", url: "https://www.patagonia.com/progress-report/" },
-    ],
+    referenceIds: ["chouinard2022", "greenBrock2000", "patagonia2011", "patagonia2025"],
   },
   {
     slug: "singapore-airlines-crisis-communication",
@@ -185,7 +192,7 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        runs: [text("That wording acknowledges what people went through instead of describing the incident as an inconvenience. Having the CEO speak also makes leadership visible. For the wider public, it provides a direct acknowledgement from the airline.")],
+        runs: [text("Acknowledging trauma gives the CEO’s message an empathetic tone and makes leadership visible. It tells the wider public that the airline recognises passengers’ distress.")],
       },
       { type: "feature" },
       {
@@ -195,9 +202,9 @@ export const articles: Article[] = [
       {
         type: "theory",
         name: "Situational crisis communication theory",
-        citation: "Coombs (2007, p. 165)",
+        citation: "Coombs (2007, pp. 165–166)",
         sourceUrl: "https://doi.org/10.1057/palgrave.crr.1550049",
-        runs: [text("Coombs’ (2007) situational crisis communication theory links responses to the responsibility stakeholders attribute to an organisation. He also puts affected people’s physical and psychological needs before reputation protection (Coombs, 2007, p. 165). For SQ321, I would separate blame for the incident from SIA’s responsibility to keep passengers informed.")],
+        runs: [text("SCCT links reputational responses to perceived responsibility, but Coombs (2007, pp. 165–166) puts victims’ needs first. He distinguishes physical-safety instructions from adjusting information that helps people cope. I read the CEO’s acknowledgement of trauma as the latter: concern, not proof of blame or adequate support. That makes passenger uncertainty a test of the response, not a side issue.")],
       },
       {
         type: "paragraph",
@@ -210,12 +217,12 @@ export const articles: Article[] = [
         type: "paragraph",
         runs: [
           text("The airline’s later "), link("AGM presentation", "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf#page=5"),
-          text(" describes medical support and reviews of turbulence procedures (Singapore Airlines, 2024, slide 5). Those actions support its public commitment, but do not establish how clearly information reached each passenger."),
+          text(" describes medical support and reviews of turbulence procedures (Singapore Airlines, 2024, slide 5). The procedure reviews fit Coombs’ emphasis on reassurance about future safety, but cannot establish how clearly information reached each passenger."),
         ],
       },
       {
         type: "paragraph",
-        runs: [text("One account cannot represent everyone’s experience. Still, comparing the public statement with this report shows why I would not assess the response from the video alone.")],
+        runs: [text("CNA’s editorial coverage illustrates earned media, not an airline-controlled advertisement (CNA, 2024). It challenges SIA’s own account rather than simply repeating it. One passenger’s experience cannot represent everyone, but the contrast shows why I would not assess the response from the video alone.")],
       },
       {
         type: "conclusion",
@@ -237,12 +244,7 @@ export const articles: Article[] = [
       ],
     },
     marginNotes: ["An apology is not the whole response.", "Who needs information first?"],
-    sources: [
-      { label: "Tan, M.-W. (2024) ‘SIA CEO apologises to SQ321 passengers for “traumatic experience”’, Mothership, 22 May. Accessed 21 September 2026.", url: "https://mothership.sg/2024/05/sia-ceo-sq321-apology/" },
-      { label: "Coombs, W.T. (2007) ‘Protecting organization reputations during a crisis: The development and application of Situational Crisis Communication Theory’, Corporate Reputation Review, 10(3), pp. 163–176. doi: 10.1057/palgrave.crr.1550049. Accessed 21 September 2026.", url: "https://doi.org/10.1057/palgrave.crr.1550049" },
-      { label: "CNA (2024) ‘SQ321 turbulence: Singapore Airlines apologises after injured passenger complains about carrier’s silence’, 23 May. Accessed 21 September 2026.", url: "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606" },
-      { label: "Singapore Airlines (2024) SIA Annual General Meeting 2024: Presentation by the Chief Executive Officer, 29 July.", url: "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf" },
-    ],
+    referenceIds: ["cna2024", "coombs2007", "sia2024", "tan2024"],
   },
   {
     slug: "airbnb-internal-communication",
@@ -281,9 +283,9 @@ export const articles: Article[] = [
       {
         type: "theory",
         name: "A stakeholder approach to internal communication",
-        citation: "Welch and Jackson (2007, pp. 183–184)",
+        citation: "Welch and Jackson (2007, pp. 183–185)",
         sourceUrl: "https://www.researchgate.net/publication/242085269_Rethinking_internal_communication_a_stakeholder_approach",
-        runs: [text("Welch and Jackson’s (2007, pp. 183–184) stakeholder approach to internal communication challenges treating employees as one uniform audience. Applying that distinction here, someone leaving needs information about their departure and support; someone staying may be worried about their role and the company’s future.")],
+        runs: [text("Welch and Jackson (2007, pp. 183–185) distinguish employee groups and one-way corporate messages from two-way exchanges. Here, the letter explains the decision to everyone; leavers need departure support, while those staying need role clarity. Individual conversations can address those different needs. I would therefore judge the follow-up by whether employees received relevant answers, not simply whether a Q&A was announced.")],
       },
       {
         type: "paragraph",
@@ -291,11 +293,11 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        runs: [text("Still, the language about belonging is awkward in a letter announcing layoffs. It could reassure some employees while feeling difficult to accept for others. Their accounts would be needed to judge how it actually landed.")],
+        runs: [text("Still, belonging is an awkward theme in a layoff letter. Employee accounts would be needed to judge whether the promised conversations actually helped.")],
       },
       {
         type: "paragraph",
-        runs: [text("There is also a second audience: the letter appears in Airbnb’s public Newsroom, where outsiders can assess its treatment of staff (Airbnb, 2020). An internal message becomes part of its external reputation.")],
+        runs: [text("There is also a second audience: Airbnb’s public Newsroom lets outsiders assess its treatment of staff (Airbnb, 2020). This is non-paid, owned communication rather than advertising, but Airbnb still controls the account. An internal message becomes part of its external reputation.")],
       },
       {
         type: "conclusion",
@@ -313,10 +315,7 @@ export const articles: Article[] = [
       ],
     },
     marginNotes: ["Employees first. Public second.", "Empathy needs practical detail."],
-    sources: [
-      { label: "Airbnb (2020) ‘A message from Co-Founder and CEO Brian Chesky’, Airbnb Newsroom, 5 May. Accessed 21 September 2026.", url: "https://news.airbnb.com/a-message-from-co-founder-and-ceo-brian-chesky" },
-      { label: "Welch, M. and Jackson, P.R. (2007) ‘Rethinking internal communication: a stakeholder approach’, Corporate Communications: An International Journal, 12(2), pp. 177–198. doi: 10.1108/13563280710744847. Accessed 21 September 2026.", url: "https://doi.org/10.1108/13563280710744847" },
-    ],
+    referenceIds: ["airbnb2020", "welchJackson2007"],
   },
   {
     slug: "dbs-stakeholder-communication",
@@ -341,14 +340,14 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        runs: [text("That makes the report interesting as communication, not just a financial document.")],
+        runs: [text("The report is non-paid, owned communication rather than an advertisement. Yet its presentation still aims to reassure: a reporting format does not make it neutral.")],
       },
       {
         type: "theory",
         name: "Stakeholder theory",
         citation: "Harrison, Freeman and de Abreu (2015, p. 859)",
         sourceUrl: "https://rbgn.fecap.br/RBGN/article/download/2647/pdf/20848#page=2",
-        runs: [text("Harrison, Freeman and de Abreu (2015, p. 859) explain that stakeholder theory considers the interests and wellbeing of groups such as employees, customers and suppliers alongside shareholders. It gives me a useful question for DBS: whose interests does the report make visible, and how does it describe the benefits they receive?")],
+        runs: [text("Stakeholder theory asks how a business serves groups’ interests and wellbeing, not just shareholders’ returns (Harrison, Freeman and de Abreu, 2015, p. 859). For DBS, putting taxes and CSR allocations under “society” makes financial contributions visible, but does not show how different communities benefit. I would look for evidence of outcomes and fair treatment, not infer them from the total.")],
       },
       {
         type: "paragraph",
@@ -371,7 +370,7 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        runs: [text("Together, the cover, labels and layout present DBS as dependable and attentive to different stakeholders. Listing those groups, however, does not establish that their interests were equally served.")],
+        runs: [text("The reassuring layout gives me a starting point, not a verdict. Applying stakeholder theory would also require evidence of how competing needs were considered and whose priorities shaped decisions.")],
       },
       {
         type: "conclusion",
@@ -388,11 +387,7 @@ export const articles: Article[] = [
       note: "“Society” includes taxes and money set aside for corporate social responsibility.",
     },
     marginNotes: ["Read the label beneath the number.", "Who is this page reassuring?"],
-    sources: [
-      { label: "DBS (2026) Annual Report 2025: A Beacon of Stability. Singapore: DBS Group Holdings Ltd. Accessed 21 September 2026.", url: "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf" },
-      { label: "DBS (2026) Annual Report 2025: interactive edition. Accessed 21 September 2026.", url: "https://www.dbs.com/annualreports/2025/index.html" },
-      { label: "Harrison, J.S., Freeman, R.E. and de Abreu, M.C.S. (2015) ‘Stakeholder theory as an ethical approach to effective management: applying the theory to multiple contexts’, Review of Business Management, 17(55), pp. 858–869. doi: 10.7819/rbgn.v17i55.2647. Accessed 21 September 2026.", url: "https://doi.org/10.7819/rbgn.v17i55.2647" },
-    ],
+    referenceIds: ["dbs2026", "harrison2015"],
   },
 ];
 

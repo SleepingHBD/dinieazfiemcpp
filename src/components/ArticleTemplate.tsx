@@ -6,6 +6,8 @@ import { articles } from "@/data/articles";
 import { ArticleHeader } from "@/components/ArticleHeader";
 import { ArticleProgress } from "@/components/ArticleProgress";
 import { ArticleSpecial } from "@/components/ArticleSpecial";
+import { ReferenceList } from "@/components/ReferenceList";
+import { getReferences } from "@/data/references";
 import styles from "./ArticleEditorial.module.css";
 
 function RichText({ runs }: { runs: TextRun[] }) {
@@ -71,13 +73,7 @@ export function ArticleTemplate({ article }: { article: Article }) {
 
         <section className={styles.sources} aria-labelledby="article-sources-title">
           <div><p className={styles.label}>Sources &amp; reading</p><h2 id="article-sources-title">References for this article</h2></div>
-          <ol>{article.sources.map((source, sourceIndex) => (
-            <li key={source.url}>
-              <span>{String(sourceIndex + 1).padStart(2, "0")}</span>
-              <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
-              <ExternalLink aria-hidden="true" />
-            </li>
-          ))}</ol>
+          <ReferenceList references={getReferences(article.referenceIds)} />
         </section>
       </div>
 

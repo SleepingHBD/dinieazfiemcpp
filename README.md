@@ -34,6 +34,8 @@ Pushing to `main` runs `.github/workflows/deploy.yml`. In the GitHub repository,
 ## Editing content
 
 - Article content and metadata: `src/data/articles.ts`
+- Shared reference records: `src/data/references.ts` (article lists are alphabetised automatically)
+- Combined reference list for submission: `docs/references.md` (update this copy when reference records change)
 - Global editorial styles: `src/app/globals.css`
 - Homepage content: `src/app/page.tsx`
 - Reusable article layout: `src/components/ArticleTemplate.tsx`
