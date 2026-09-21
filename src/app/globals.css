@@ -172,22 +172,18 @@ img { display: block; }
 .section-heading h2 { position: relative; width: fit-content; }
 .section-heading h2::after { content: ""; position: absolute; left: 8%; right: -4%; bottom: -.35rem; height: 6px; border-bottom: 3px solid var(--rust); border-radius: 50%; transform: rotate(-1.5deg); }
 .section-heading > p { margin: 0; color: #4f504a; font-size: .86rem; line-height: 1.7; }
-.articles__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 4.5rem clamp(2rem, 4vw, 4rem); }
-.field-card { display: grid; grid-template-rows: auto auto 1fr; min-width: 0; }
-.field-card__header { display: grid; grid-template-columns: 74px 1fr; align-items: end; min-height: 94px; padding: 1rem 0; border-top: 1px solid var(--green); }
-.field-card__header .eyebrow { margin: 0; }
-.field-card__number { margin: 0; color: var(--rust); font-family: var(--serif); font-size: 3.6rem; font-style: italic; font-weight: 500; line-height: .8; transition: transform .25s ease; }
-.field-card:hover .field-card__number { transform: translateY(-3px); }
-.field-card__case { margin: .2rem 0 0; color: var(--green); font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1.1; }
+.articles__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 2.75rem clamp(2rem, 4vw, 4rem); }
+.field-card { min-width: 0; }
 .field-card__artwork { display: block; height: clamp(210px, 20vw, 280px); overflow: hidden; }
-.field-card__content { display: flex; flex-direction: column; padding-top: 1.25rem; }
-.field-card h3 { margin: 0 0 .9rem; color: var(--green); font-family: var(--serif); font-size: clamp(2.25rem, 3vw, 3.4rem); font-weight: 500; line-height: .95; letter-spacing: -.035em; }
-.field-card h3 a { background-image: linear-gradient(var(--rust), var(--rust)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 2px; transition: background-size .3s ease; }
-.field-card h3 a:hover { background-size: 100% 2px; }
-.field-card__excerpt { margin: 0 0 1.25rem; color: #4c4b45; font-size: .92rem; line-height: 1.7; }
-.field-card__footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
-.field-card .meta { margin: 0; }
-.field-card .text-link { margin-top: 0; font-size: .64rem; }
+.field-card__content { padding-top: 1rem; }
+.field-card__category { display: flex; align-items: baseline; gap: .5rem; margin: 0 0 .6rem; color: var(--rust); font-size: .64rem; font-weight: 600; letter-spacing: .12em; line-height: 1.5; text-transform: uppercase; }
+.field-card__category > span { flex-shrink: 0; }
+.field-card h3 { margin: 0; color: var(--green); font-family: var(--serif); font-size: clamp(2rem, 2.8vw, 2.8rem); font-weight: 500; line-height: 1.03; letter-spacing: -.025em; }
+.field-card h3 a { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.field-card h3 a > span { background-image: linear-gradient(var(--rust), var(--rust)); background-repeat: no-repeat; background-position: 0 100%; background-size: 0 1px; transition: background-size .25s ease; }
+.field-card h3 a:hover > span, .field-card h3 a:focus-visible > span { background-size: 100% 1px; }
+.field-card h3 svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--rust); stroke-width: 1.5; transition: transform .2s ease; }
+.field-card h3 a:hover svg, .field-card h3 a:focus-visible svg { transform: translateX(3px); }
 .archive-link { display: flex; align-items: center; justify-content: space-between; margin-top: 5rem; padding: 1.2rem 0; border-block: 1px solid var(--green); color: var(--green); }
 .archive-link span { font-family: var(--hand); color: var(--rust); font-size: 1.25rem; }
 .archive-link strong { font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; }
@@ -451,11 +447,6 @@ img { display: block; }
   .homepage-grid { padding-block: 5rem; }
   .section-heading { grid-template-columns: 1fr; }
   .articles__grid, .blog-archive { grid-template-columns: 1fr; }
-  .field-card__header { grid-template-columns: 64px 1fr; min-height: 86px; }
-  .field-card__number { font-size: 3.2rem; }
-  .field-card__image { aspect-ratio: 4 / 3; }
-  .field-card__content { min-height: 0; }
-  .field-card h3 { min-height: 0; }
   .sidebar { grid-template-columns: 1fr; }
   .sidebar .popular-list { grid-column: auto; }
   .pull-quote blockquote br { display: none; }

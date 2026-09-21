@@ -6,13 +6,6 @@ import type { Article } from "@/data/articles";
 export function ArticleCard({ article, index }: { article: Article; index: number }) {
   return (
     <article className="field-card">
-      <header className="field-card__header">
-        <p className="field-card__number" aria-label={`Article ${article.articleNumber}`}>{article.articleNumber}</p>
-        <div>
-          <p className="eyebrow">{article.category}</p>
-          <p className="field-card__case">{article.caseStudy}</p>
-        </div>
-      </header>
       <Link
         className="field-card__artwork"
         href={`/blog/${article.slug}`}
@@ -20,14 +13,19 @@ export function ArticleCard({ article, index }: { article: Article; index: numbe
       >
         <ArticleBrandVisual article={article} eager={index < 2} />
       </Link>
-      <div className="field-card__content">
-        <h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3>
-        <p className="field-card__excerpt">{article.excerpt}</p>
-        <footer className="field-card__footer">
-          <p className="meta"><span>{article.date}</span><span>{article.readTime}</span></p>
-          <Link className="text-link" href={`/blog/${article.slug}`}>Read the analysis <ArrowRight /></Link>
-        </footer>
-      </div>
+      <header className="field-card__content">
+        <p className="field-card__category">
+          <span aria-label={`Article ${article.articleNumber}`}>{article.articleNumber}</span>
+          <span aria-hidden="true">/</span>
+          {article.category}
+        </p>
+        <h3>
+          <Link href={`/blog/${article.slug}`}>
+            <span>{article.title}</span>
+            <ArrowRight aria-hidden="true" />
+          </Link>
+        </h3>
+      </header>
     </article>
   );
 }
