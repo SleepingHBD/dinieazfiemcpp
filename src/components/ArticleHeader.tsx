@@ -10,7 +10,6 @@ export function ArticleHeader({ article }: { article: Article }) {
         <p className="eyebrow">{article.category} / {article.caseStudy}</p>
         <h1>{article.title}</h1>
         <p className="article-hero__subtitle">{article.subtitle}</p>
-        <p className="meta"><span>{article.date}</span><span>{article.readTime}</span><span>By [Your Name]</span></p>
       </div>
       <div className="article-hero__media shell">
         <div className="article-hero__image">
