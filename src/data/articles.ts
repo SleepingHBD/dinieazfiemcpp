@@ -2,8 +2,44 @@ export type ArticleVariant = "field" | "crisis" | "memo" | "report";
 
 export interface SourceEntry {
   label: string;
-  url?: string;
+  url: string;
 }
+
+export interface TextRun {
+  text: string;
+  href?: string;
+  strong?: boolean;
+  emphasis?: boolean;
+}
+
+export type ArticleBodyBlock =
+  | { type: "paragraph" | "lead" | "question" | "conclusion"; runs: TextRun[] }
+  | { type: "theory"; name: string; citation: string; sourceUrl: string; runs: TextRun[] }
+  | { type: "feature" };
+
+export type ArticleFeature =
+  | {
+      type: "ownership";
+      headline: string;
+      routes: { title: string; detail: string }[];
+      statistics: { value: string; label: string }[];
+    }
+  | {
+      type: "timeline";
+      steps: { date: string; title: string; detail: string }[];
+    }
+  | {
+      type: "memo";
+      quote: string;
+      supports: string[];
+    }
+  | {
+      type: "report";
+      value: string;
+      label: string;
+      stakeholders: string[];
+      note: string;
+    };
 
 export interface Article {
   slug: string;
@@ -18,181 +54,317 @@ export interface Article {
   imageAlt: string;
   excerpt: string;
   variant: ArticleVariant;
-  observation: string[];
-  context: string[];
-  strategies: { title: string; description: string }[];
-  theory: {
-    name: string;
-    authors: string;
-    explanation: string;
-    application: string;
-  };
-  evaluation: { well: string[]; improve: string[] };
-  takeaway: string;
+  body: ArticleBodyBlock[];
+  feature: ArticleFeature;
   marginNotes: string[];
   sources: SourceEntry[];
 }
+
+const text = (value: string): TextRun => ({ text: value });
+const strong = (value: string): TextRun => ({ text: value, strong: true });
+const emphasis = (value: string): TextRun => ({ text: value, emphasis: true });
+const link = (value: string, href: string, options: Pick<TextRun, "strong" | "emphasis"> = {}): TextRun => ({ text: value, href, ...options });
 
 export const articles: Article[] = [
   {
     slug: "patagonia-corporate-storytelling",
     articleNumber: "01",
     title: "When Companies Try to Look Human",
-    subtitle: "Corporate Storytelling in Action",
+    subtitle: "Patagonia, corporate storytelling and the question of authenticity",
     category: "Corporate Storytelling",
     caseStudy: "Patagonia",
     date: "22.09.26",
-    readTime: "7 min read",
+    readTime: "4 min read",
     heroImage: "/images/patagonia-storytelling.webp",
-    imageAlt: "A person repairing a weathered red outdoor jacket beside a rugged coastline",
-    excerpt: "How Patagonia uses storytelling, environmental purpose and organisational values to communicate an identity that audiences are encouraged to trust.",
+    imageAlt: "A person repairing a weathered outdoor jacket beside a rugged coastline",
+    excerpt: "How Patagonia turns a complex ownership structure into a story of purpose — and where that story still needs qualification.",
     variant: "field",
-    observation: [
-      "I kept returning to one question: when a company speaks like a person, what makes that voice feel credible rather than constructed? Patagonia is a useful case through which to examine that tension.",
-      "What caught my attention was not a single advertisement, but the relationship between message, identity and visible action. This note is designed to test whether those parts genuinely support one another.",
+    body: [
+      {
+        type: "lead",
+        runs: [strong("“Earth is now our only shareholder.”"), text(" It’s a memorable line, but it leaves me with a fairly basic question: who actually owns the company?")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("Patagonia’s "),
+          link("2022 announcement", "https://www.patagonia.com/ownership/"),
+          text(" explains that voting shares went to the Patagonia Purpose Trust and non-voting shares to the Holdfast Collective. Excess profits, after reinvestment and reserves, would support environmental work (Chouinard, 2022)."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("The headline makes a complicated arrangement approachable. The founder’s letter then explains his search for a way to protect the company’s values, including why he rejected selling the business or taking it public (Chouinard, 2022). Rather than just announcing a decision, he takes readers through the problem behind it.")],
+      },
+      {
+        type: "theory",
+        name: "Narrative transportation",
+        citation: "Green and Brock (2000, pp. 701–702)",
+        sourceUrl: "https://www.communicationcache.com/uploads/1/0/8/8/10887248/the_role_of_transportation_in_the_persuasiveness_of_public_narratives.pdf",
+        runs: [text("Green and Brock’s (2000, pp. 701–702) concept of narrative transportation helps explain the potential appeal. It describes becoming absorbed in a story through attention, emotion and mental imagery. I can see how following Chouinard’s dilemma could draw readers into his perspective. That is a possible explanation of its persuasiveness, though, not evidence that Patagonia’s readers actually experienced it.")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("What gives me more to assess is the "),
+          link("2025 ", "https://www.patagonia.com/progress-report/"),
+          link("Work in Progress Report", "https://www.patagonia.com/progress-report/", { emphasis: true }),
+          text(". Patagonia reports repairing 174,799 products globally during FY25, while acknowledging that around 85% of its products lacked an end-of-life solution (Patagonia, 2025)."),
+        ],
+      },
+      { type: "feature" },
+      {
+        type: "paragraph",
+        runs: [text("Including both figures makes the report more useful to me than a list of achievements. It gives readers something to question, although Patagonia still chooses what to disclose.")],
+      },
+      {
+        type: "conclusion",
+        runs: [text("The two formats do different jobs: the letter makes the purpose understandable, while the report gives it detail. I would keep them together rather than let the headline stand on its own. Earth does not literally hold the shares, and the environmental work is clearly unfinished. "), strong("Those qualifications are part of the story too.")],
+      },
     ],
-    context: [
-      "[ADD VERIFIED CAMPAIGN CONTEXT, DATE AND SOURCE HERE.] This section should briefly introduce the material being analysed without turning the article into a company history.",
-      "The campaign title “Don’t Buy This Jacket” is included because it is central to the selected communication example. Add a verified campaign image, publication context and direct link before submission.",
-    ],
-    strategies: [
-      { title: "Storytelling", description: "Examine the story the organisation asks audiences to enter, and the role it assigns to the customer." },
-      { title: "Consistency", description: "Compare the campaign language with other visible parts of the organisation’s identity and behaviour." },
-      { title: "Action-led communication", description: "Ask whether the message is supported by evidence that can be independently verified." },
-    ],
-    theory: {
-      name: "Narrative Paradigm / Corporate Identity",
-      authors: "[AUTHOR(S) AND YEAR TO BE ADDED]",
-      explanation: "[ADD A SHORT, CITED EXPLANATION OF THE SELECTED THEORY. Do not rely on uncited lecture notes.]",
-      application: "Use the theory to test narrative coherence: does the story feel consistent with the identity the organisation performs elsewhere? (Author, Year)",
+    feature: {
+      type: "ownership",
+      headline: "Earth is now our only shareholder.",
+      routes: [
+        { title: "Patagonia Purpose Trust", detail: "Voting shares" },
+        { title: "Holdfast Collective", detail: "Non-voting shares" },
+      ],
+      statistics: [
+        { value: "174,799", label: "Products repaired globally during FY25" },
+        { value: "≈85%", label: "Products reported without an end-of-life solution" },
+      ],
     },
-    evaluation: {
-      well: ["Creates a recognisable narrative position", "Connects communication to organisational values", "Invites audiences to evaluate behaviour, not only copy"],
-      improve: ["Add verified evidence of audience response", "Test whether the same message reaches different stakeholders", "Separate brand narrative from independently verifiable impact"],
-    },
-    takeaway: "A human voice is not automatically a human organisation. The stronger question is whether the story remains coherent when the audience looks beyond the campaign and into the company’s choices.",
-    marginNotes: ["Words vs actions?", "Does the audience believe it?", "Notice the narrative role."],
-    sources: [{ label: "[PATAGONIA CORPORATE SOURCE TO BE ADDED]" }, { label: "[CAMPAIGN MATERIAL SOURCE TO BE ADDED]" }, { label: "[ACADEMIC REFERENCE TO BE ADDED]" }],
+    marginNotes: ["Who actually owns the company?", "Story first. Evidence next."],
+    sources: [
+      { label: "Chouinard, Y. (2022) ‘Earth is now our only shareholder’, Patagonia, 14 September. Accessed 21 September 2026.", url: "https://www.patagonia.com/ownership/" },
+      { label: "Green, M.C. and Brock, T.C. (2000) ‘The role of transportation in the persuasiveness of public narratives’, Journal of Personality and Social Psychology, 79(5), pp. 701–721. doi: 10.1037/0022-3514.79.5.701. Accessed 21 September 2026.", url: "https://doi.org/10.1037/0022-3514.79.5.701" },
+      { label: "Patagonia (2025) Work in Progress Report 2025. Accessed 21 September 2026.", url: "https://www.patagonia.com/progress-report/" },
+    ],
   },
   {
     slug: "singapore-airlines-crisis-communication",
     articleNumber: "02",
     title: "When Things Go Wrong",
-    subtitle: "Crisis Communication Under Pressure",
+    subtitle: "Singapore Airlines SQ321 and the limits of a public apology",
     category: "Crisis Communication",
     caseStudy: "Singapore Airlines SQ321",
     date: "29.09.26",
-    readTime: "8 min read",
+    readTime: "4 min read",
     heroImage: "/images/singapore-airlines-crisis.webp",
-    imageAlt: "Airline operations staff reviewing updates at a rain-darkened airport gate",
-    excerpt: "How organisations communicate when reassurance, responsibility and reputation suddenly become inseparable.",
+    imageAlt: "Airline operations staff reviewing updates at an airport gate",
+    excerpt: "What SQ321 shows about the difference between a public apology and useful information for affected passengers.",
     variant: "crisis",
-    observation: [
-      "Crisis messages are read differently from ordinary corporate communication. Every delay, omission and choice of phrase can carry more weight because people are looking for both information and care.",
-      "I chose SQ321 to observe how an organisation balances speed, responsibility and passenger support under intense public attention. All event details below remain marked for verification before assessment.",
+    body: [
+      {
+        type: "lead",
+        runs: [text("A public apology and a useful answer are not always the same thing. Singapore Airlines’ response to SQ321 made that distinction stand out to me.")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("On "), strong("22 May 2024"), text(", following the previous day’s turbulence incident in which one passenger died and others were injured, chief executive Goh Choon Phong appeared in a "),
+          link("social-media video", "https://mothership.sg/2024/05/sia-ceo-sq321-apology/"),
+          text(". He apologised for passengers’ “traumatic experience” and promised assistance (Tan, 2024)."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("That wording acknowledges what people went through instead of describing the incident as an inconvenience. Having the CEO speak also makes leadership visible. For the wider public, it provides a direct acknowledgement from the airline.")],
+      },
+      { type: "feature" },
+      {
+        type: "question",
+        runs: [strong("But what about someone waiting for answers in hospital?")],
+      },
+      {
+        type: "theory",
+        name: "Situational crisis communication theory",
+        citation: "Coombs (2007, p. 165)",
+        sourceUrl: "https://doi.org/10.1057/palgrave.crr.1550049",
+        runs: [text("Coombs’ (2007) situational crisis communication theory links responses to the responsibility stakeholders attribute to an organisation. He also puts affected people’s physical and psychological needs before reputation protection (Coombs, 2007, p. 165). For SQ321, I would separate blame for the incident from SIA’s responsibility to keep passengers informed.")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("On 23 May, "), link("CNA reported", "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606"),
+          text(" that passenger Keith Davis felt left without answers about insurance and his wife’s medical evacuation. SIA apologised and said a customer-care representative had been providing updates and assistance (CNA, 2024)."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("The airline’s later "), link("AGM presentation", "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf#page=5"),
+          text(" describes medical support and reviews of turbulence procedures (Singapore Airlines, 2024, slide 5). Those actions support its public commitment, but do not establish how clearly information reached each passenger."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("One account cannot represent everyone’s experience. Still, comparing the public statement with this report shows why I would not assess the response from the video alone.")],
+      },
+      {
+        type: "conclusion",
+        runs: [text("For me, effective crisis communication would also mean knowing whom to contact, what support was available and when to expect another update. The apology matters, but "), strong("a passenger should not have to rely on the same information as someone watching the news.")],
+      },
     ],
-    context: [
-      "[ADD VERIFIED INCIDENT SUMMARY, DATE, LOCATION AND SOURCE HERE.] Keep this account concise, factual and sensitive to those affected.",
-      "[ADD LINKS TO THE OFFICIAL STATEMENT, VERIFIED NEWS COVERAGE AND RELEVANT SOCIAL POSTS.] Screenshots should include source captions and access dates.",
-    ],
-    strategies: [
-      { title: "Reassurance", description: "Identify the language used to reduce uncertainty without minimising the seriousness of the event." },
-      { title: "Responsibility", description: "Look for what the organisation acknowledges, what it commits to, and what remains unsaid." },
-      { title: "Speed of response", description: "Build a verified timeline before judging whether the response was appropriately prompt." },
-    ],
-    theory: {
-      name: "Situational Crisis Communication Theory",
-      authors: "[AUTHOR(S) AND YEAR TO BE ADDED]",
-      explanation: "[ADD A SHORT, CITED EXPLANATION OF SCCT AND ITS CRISIS-RESPONSE CATEGORIES.]",
-      application: "Classify the crisis only after checking the evidence, then compare the response strategy with the theory’s recommendations. (Author, Year)",
+    feature: {
+      type: "timeline",
+      steps: [
+        { date: "21 May 2024", title: "Incident", detail: "SQ321 turbulence incident" },
+        { date: "22 May 2024", title: "Public apology", detail: "CEO video acknowledges passengers’ traumatic experience" },
+        { date: "23 May 2024", title: "Passenger account", detail: "CNA reports concerns about access to information" },
+        { date: "29 July 2024", title: "Later account", detail: "AGM presentation outlines support and procedure reviews" },
+      ],
     },
-    evaluation: {
-      well: ["Communicated quickly [VERIFY]", "Acknowledged the incident [VERIFY]", "Provided ongoing updates [VERIFY]", "Communicated passenger support [VERIFY]"],
-      improve: ["[ADD YOUR CRITICAL ASSESSMENT]", "[COMPARE WORDING ACROSS CHANNELS]", "[ASSESS THE NEEDS OF DIFFERENT STAKEHOLDERS]"],
-    },
-    takeaway: "In a crisis, polished language matters less than useful, timely and humane communication. The eventual judgment depends on whether the organisation’s words help people understand what happened and what support follows.",
-    marginNotes: ["Public pressure changes the message.", "Who needs reassurance first?", "What changed between updates?"],
-    sources: [{ label: "[OFFICIAL SINGAPORE AIRLINES STATEMENT TO BE ADDED]" }, { label: "[VERIFIED NEWS REPORT TO BE ADDED]" }, { label: "[ACADEMIC REFERENCE TO BE ADDED]" }],
+    marginNotes: ["An apology is not the whole response.", "Who needs information first?"],
+    sources: [
+      { label: "Tan, M.-W. (2024) ‘SIA CEO apologises to SQ321 passengers for “traumatic experience”’, Mothership, 22 May. Accessed 21 September 2026.", url: "https://mothership.sg/2024/05/sia-ceo-sq321-apology/" },
+      { label: "Coombs, W.T. (2007) ‘Protecting organization reputations during a crisis: The development and application of Situational Crisis Communication Theory’, Corporate Reputation Review, 10(3), pp. 163–176. doi: 10.1057/palgrave.crr.1550049. Accessed 21 September 2026.", url: "https://doi.org/10.1057/palgrave.crr.1550049" },
+      { label: "CNA (2024) ‘SQ321 turbulence: Singapore Airlines apologises after injured passenger complains about carrier’s silence’, 23 May. Accessed 21 September 2026.", url: "https://www.channelnewsasia.com/singapore/sq321-turbulence-singapore-airlines-apology-injured-passenger-complaint-lack-information-4358606" },
+      { label: "Singapore Airlines (2024) SIA Annual General Meeting 2024: Presentation by the Chief Executive Officer, 29 July.", url: "https://www.singaporeair.com/content/dam/sia/web-assets/pdfs/about-us/information-for-investors/agm-egm/2024/AGM_2024_CEO_Presentation.pdf" },
+    ],
   },
   {
     slug: "airbnb-internal-communication",
     articleNumber: "03",
     title: "Talking to the People Inside",
-    subtitle: "When Employees Become the Most Important Audience",
+    subtitle: "Airbnb and communicating a decision nobody wants to hear",
     category: "Internal Communication",
     caseStudy: "Airbnb employee layoffs",
     date: "06.10.26",
-    readTime: "7 min read",
+    readTime: "4 min read",
     heroImage: "/images/airbnb-internal.webp",
     imageAlt: "A remote employee reading a long internal message at a kitchen table",
-    excerpt: "What happens when corporate communication is directed towards employees rather than customers?",
+    excerpt: "How Airbnb’s 2020 layoff letter balanced empathy, practical detail and competing internal and public audiences.",
     variant: "memo",
-    observation: [
-      "Internal communication becomes especially revealing when leaders have to deliver news people do not want to hear. Tone can signal empathy, but structure and practical detail determine whether that empathy is useful.",
-      "This case offers a way to compare two audiences at once: employees who experience the decision directly, and a wider public that later encounters the same message as evidence of leadership and culture.",
+    body: [
+      {
+        type: "lead",
+        runs: [text("How do you tell someone they are losing their job without sounding as though you are mainly protecting the company?")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("In Airbnb’s "), link("May 2020 employee letter", "https://news.airbnb.com/a-message-from-co-founder-and-ceo-brian-chesky"),
+          text(", Brian Chesky announced that nearly 1,900 employees would leave, around a quarter of the workforce. One sentence caught my attention: "), strong("“Please know this is not your fault”"), text(" (Airbnb, 2020)."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("It separates the business decision from an employee’s sense of personal failure. But I would find that reassurance rather empty without practical information.")],
+      },
+      {
+        type: "paragraph",
+        runs: [text("The letter sets out severance, healthcare and job-search support under clear headings. Employees can return to the written details, while planned individual conversations and a company Q&A offer opportunities to ask questions (Airbnb, 2020).")],
+      },
+      { type: "feature" },
+      {
+        type: "theory",
+        name: "A stakeholder approach to internal communication",
+        citation: "Welch and Jackson (2007, pp. 183–184)",
+        sourceUrl: "https://www.researchgate.net/publication/242085269_Rethinking_internal_communication_a_stakeholder_approach",
+        runs: [text("Welch and Jackson’s (2007, pp. 183–184) stakeholder approach to internal communication challenges treating employees as one uniform audience. Applying that distinction here, someone leaving needs information about their departure and support; someone staying may be worried about their role and the company’s future.")],
+      },
+      {
+        type: "paragraph",
+        runs: [text("Airbnb addresses both groups and explains that arrangements differ between countries (Airbnb, 2020). That makes the message more responsive to employees’ circumstances.")],
+      },
+      {
+        type: "paragraph",
+        runs: [text("Still, the language about belonging is awkward in a letter announcing layoffs. It could reassure some employees while feeling difficult to accept for others. Their accounts would be needed to judge how it actually landed.")],
+      },
+      {
+        type: "paragraph",
+        runs: [text("There is also a second audience: the letter appears in Airbnb’s public Newsroom, where outsiders can assess its treatment of staff (Airbnb, 2020). An internal message becomes part of its external reputation.")],
+      },
+      {
+        type: "conclusion",
+        runs: [text("What I take from this is the importance of answering different people’s questions. A warm tone helps, but "), strong("employees should not have to search through it to work out what happens to them next.")],
+      },
     ],
-    context: [
-      "[ADD VERIFIED CONTEXT FOR THE EMPLOYEE COMMUNICATION, INCLUDING DATE AND ORIGINAL SOURCE.] Avoid quoting from secondary summaries where the primary communication is available.",
-      "[ADD AN ACCURATE, SHORT EXCERPT ONLY AFTER CHECKING THE ORIGINAL MEMO.] Keep quotation length appropriate and add a Harvard-style citation.",
-    ],
-    strategies: [
-      { title: "Transparency", description: "Assess which reasons, implications and next steps are made clear—and which remain vague." },
-      { title: "Leadership tone", description: "Look at pronouns, accountability and whether empathy is expressed through concrete support." },
-      { title: "Audience sequencing", description: "Consider how employees are addressed before the communication becomes a public reputation artefact." },
-    ],
-    theory: {
-      name: "Internal Communication Theory",
-      authors: "[SELECT THEORY, AUTHOR(S) AND YEAR]",
-      explanation: "[ADD A SHORT, CITED EXPLANATION OF AN APPROPRIATE INTERNAL COMMUNICATION OR EMPLOYEE-RELATIONSHIP FRAMEWORK.]",
-      application: "Use the selected theory to evaluate whether the communication enables understanding, voice and trust—not merely message delivery. (Author, Year)",
+    feature: {
+      type: "memo",
+      quote: "Please know this is not your fault.",
+      supports: ["Severance", "Healthcare", "Job-search support", "Individual conversations", "Company Q&A"],
     },
-    evaluation: {
-      well: ["Explains the leadership position [VERIFY]", "Uses direct, human language [VERIFY WITH TEXT]", "Provides practical next steps [VERIFY]"],
-      improve: ["Examine who is absent from the message", "Test whether empathy is matched by process", "Compare employee and public interpretations"],
-    },
-    takeaway: "An internal message can become external almost immediately, but that does not make both audiences equal. The communication should first work for the people whose working lives it changes.",
-    marginNotes: ["Employees first.", "Empathy needs evidence.", "Who gets a voice here?"],
-    sources: [{ label: "[ORIGINAL AIRBNB EMPLOYEE COMMUNICATION TO BE ADDED]" }, { label: "[VERIFIED COMPANY CONTEXT TO BE ADDED]" }, { label: "[ACADEMIC REFERENCE TO BE ADDED]" }],
+    marginNotes: ["Employees first. Public second.", "Empathy needs practical detail."],
+    sources: [
+      { label: "Airbnb (2020) ‘A message from Co-Founder and CEO Brian Chesky’, Airbnb Newsroom, 5 May. Accessed 21 September 2026.", url: "https://news.airbnb.com/a-message-from-co-founder-and-ceo-brian-chesky" },
+      { label: "Welch, M. and Jackson, P.R. (2007) ‘Rethinking internal communication: a stakeholder approach’, Corporate Communications: An International Journal, 12(2), pp. 177–198. doi: 10.1108/13563280710744847. Accessed 21 September 2026.", url: "https://doi.org/10.1108/13563280710744847" },
+    ],
   },
   {
     slug: "dbs-stakeholder-communication",
     articleNumber: "04",
     title: "When Reporting Becomes Reputation",
-    subtitle: "Corporate Reports as Communication",
+    subtitle: "DBS and the story behind the numbers",
     category: "Stakeholder Communication",
     caseStudy: "DBS Annual Report",
     date: "13.10.26",
-    readTime: "9 min read",
+    readTime: "4 min read",
     heroImage: "/images/dbs-reporting.webp",
     imageAlt: "An analyst annotating an annual report with charts beside the Singapore skyline",
-    excerpt: "How organisations use reports, statistics and corporate narratives to communicate legitimacy and responsibility to stakeholders.",
+    excerpt: "How DBS uses metaphor, labels and selected figures to frame stability and stakeholder value in its annual report.",
     variant: "report",
-    observation: [
-      "Annual reports can look neutral because they are dense with numbers, governance language and formal structure. But every selection, sequence and headline still frames the organisation in a particular way.",
-      "I chose a DBS annual report to look beyond the data itself and ask what the document is trying to make different stakeholders feel: informed, reassured, impressed—or all three.",
+    body: [
+      {
+        type: "lead",
+        runs: [
+          text("A lighthouse is not what I would expect on the cover of a bank’s annual report. Yet DBS places one beneath the title "), emphasis("A Beacon of Stability"), text(" in its "),
+          link("2025 report", "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf"), text(" (DBS, 2026). Before reaching the figures, I am already being offered an image of reassurance."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("That makes the report interesting as communication, not just a financial document.")],
+      },
+      {
+        type: "theory",
+        name: "Stakeholder theory",
+        citation: "Harrison, Freeman and de Abreu (2015, p. 859)",
+        sourceUrl: "https://rbgn.fecap.br/RBGN/article/download/2647/pdf/20848#page=2",
+        runs: [text("Harrison, Freeman and de Abreu (2015, p. 859) explain that stakeholder theory considers the interests and wellbeing of groups such as employees, customers and suppliers alongside shareholders. It gives me a useful question for DBS: whose interests does the report make visible, and how does it describe the benefits they receive?")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("On "), link("printed page 72", "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf#page=38"),
+          text(", a diagram allocates SGD14.9 billion in financial value created during 2025 between employees, society, shareholders and retained earnings. The explanation beneath “society” includes taxes and money set aside for corporate social responsibility (DBS, 2026, p. 72)."),
+        ],
+      },
+      { type: "feature" },
+      {
+        type: "paragraph",
+        runs: [text("That detail is worth slowing down for. I might initially read “society” as community giving, but the category is broader than donations. The definition is there; the risk is relying on the impression of the label without reading it.")],
+      },
+      {
+        type: "paragraph",
+        runs: [
+          text("The "), link("interactive report", "https://www.dbs.com/annualreports/2025/index.html"),
+          text(" offers a quicker route through selected financial and sustainability highlights, with links to further detail (DBS, 2026). I find that useful for getting my bearings, although it also makes it easy to stop at the headline figures."),
+        ],
+      },
+      {
+        type: "paragraph",
+        runs: [text("Together, the cover, labels and layout present DBS as dependable and attentive to different stakeholders. Listing those groups, however, does not establish that their interests were equally served.")],
+      },
+      {
+        type: "conclusion",
+        runs: [text("My main lesson is to "), strong("read the explanation beneath a chart as carefully as the number inside it"), text(". The figures matter, but so do the choices about how to present them.")],
+      },
     ],
-    context: [
-      "[ADD THE EXACT DBS REPORT TITLE, REPORTING YEAR, PUBLICATION DATE AND OFFICIAL URL.] Use only figures copied directly from the verified report.",
-      "[ADD CAPTIONED SCREENSHOTS OF THE PAGES ANALYSED.] Explain why each page was selected and who appears to be its intended audience.",
-    ],
-    strategies: [
-      { title: "Framing", description: "Notice which outcomes receive visual emphasis and how challenges are positioned around them." },
-      { title: "Legitimacy", description: "Examine how evidence, governance and institutional language establish permission to be trusted." },
-      { title: "Stakeholder mapping", description: "Identify which audiences are explicitly addressed and whose concerns receive the most space." },
-    ],
-    theory: {
-      name: "Stakeholder Theory / Framing",
-      authors: "[AUTHOR(S) AND YEAR TO BE ADDED]",
-      explanation: "[ADD A SHORT, CITED EXPLANATION OF THE SELECTED THEORY OR THEORIES.]",
-      application: "Map the report’s audiences and examine how design, ordering and data selection frame value for each group. (Author, Year)",
+    feature: {
+      type: "report",
+      value: "SGD14.9bn",
+      label: "Financial value created during 2025",
+      stakeholders: ["Employees", "Society", "Shareholders", "Retained earnings"],
+      note: "“Society” includes taxes and money set aside for corporate social responsibility.",
     },
-    evaluation: {
-      well: ["Makes performance information scannable [VERIFY]", "Signals accountability through structure [VERIFY]", "Addresses multiple stakeholder groups [VERIFY]"],
-      improve: ["Compare prominence of positive and negative information", "Test whether key terms are defined consistently", "Separate transparency from strategic framing"],
-    },
-    takeaway: "A report does not simply contain reputation; it actively builds it. Reading critically means paying attention to what the document foregrounds, what it compresses and who it works hardest to reassure.",
-    marginNotes: ["Why this number?", "Who is this page reassuring?", "Transparency—or strategic framing?"],
-    sources: [{ label: "[DBS ANNUAL REPORT URL TO BE ADDED]" }, { label: "[RELEVANT DBS CORPORATE SOURCE TO BE ADDED]" }, { label: "[ACADEMIC REFERENCE TO BE ADDED]" }],
+    marginNotes: ["Read the label beneath the number.", "Who is this page reassuring?"],
+    sources: [
+      { label: "DBS (2026) Annual Report 2025: A Beacon of Stability. Singapore: DBS Group Holdings Ltd. Accessed 21 September 2026.", url: "https://www.dbs.com/annualreports/2025/i/pdf/dbs-ar-2025.pdf" },
+      { label: "DBS (2026) Annual Report 2025: interactive edition. Accessed 21 September 2026.", url: "https://www.dbs.com/annualreports/2025/index.html" },
+      { label: "Harrison, J.S., Freeman, R.E. and de Abreu, M.C.S. (2015) ‘Stakeholder theory as an ethical approach to effective management: applying the theory to multiple contexts’, Review of Business Management, 17(55), pp. 858–869. doi: 10.7819/rbgn.v17i55.2647. Accessed 21 September 2026.", url: "https://doi.org/10.7819/rbgn.v17i55.2647" },
+    ],
   },
 ];
 

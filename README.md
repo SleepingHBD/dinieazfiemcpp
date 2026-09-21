@@ -39,4 +39,4 @@ Pushing to `main` runs `.github/workflows/deploy.yml`. In the GitHub repository,
 - Reusable article layout: `src/components/ArticleTemplate.tsx`
 - Replaceable photography: `public/images/`
 
-Bracketed text such as `[ACADEMIC REFERENCE TO BE ADDED]` is intentionally left as a verification placeholder. Replace all such content before university submission.
+All factual claims, quotations and references should be checked against the linked primary and academic sources before university submission.

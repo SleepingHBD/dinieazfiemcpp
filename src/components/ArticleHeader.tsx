@@ -16,7 +16,7 @@ export function ArticleHeader({ article }: { article: Article }) {
         <div className="article-hero__image">
           <Image src={assetPath(article.heroImage)} alt={article.imageAlt} fill loading="eager" fetchPriority="high" sizes="100vw" />
         </div>
-        <p className="article-hero__caption">Original editorial placeholder image / replace if required <span>Fig. {article.articleNumber}</span></p>
+        <p className="article-hero__caption">Editorial image <span>Fig. {article.articleNumber}</span></p>
         <p className="article-hero__note" aria-hidden="true">{article.marginNotes[0]} <span>↙</span></p>
       </div>
     </header>
