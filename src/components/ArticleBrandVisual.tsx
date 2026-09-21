@@ -1,55 +1,67 @@
-import { ChartNoAxesCombined, Mountain, Plane, UsersRound } from "lucide-react";
+import Image from "next/image";
 import type { Article } from "@/data/articles";
+import { assetPath } from "@/lib/site";
 
 const brandVisuals = {
   field: {
     name: "Patagonia",
     label: "Ownership / purpose / environment",
     detail: "Corporate storytelling",
-    Icon: Mountain,
+    logo: "/images/logos/patagonia.svg",
+    width: 488,
+    height: 91,
   },
   crisis: {
     name: "Singapore Airlines",
     label: "SQ321 / response under pressure",
     detail: "Crisis communication",
-    Icon: Plane,
+    logo: "/images/logos/singapore-airlines.svg",
+    width: 496,
+    height: 184,
   },
   memo: {
     name: "Airbnb",
     label: "Employee letter / May 2020",
     detail: "Internal communication",
-    Icon: UsersRound,
+    logo: "/images/logos/airbnb-belo.svg",
+    width: 142,
+    height: 152,
   },
   report: {
     name: "DBS",
     label: "Annual Report 2025",
     detail: "Stakeholder communication",
-    Icon: ChartNoAxesCombined,
+    logo: "/images/logos/dbs.svg",
+    width: 376,
+    height: 112,
   },
 } satisfies Record<Article["variant"], {
   name: string;
   label: string;
   detail: string;
-  Icon: typeof Mountain;
+  logo: string;
+  width: number;
+  height: number;
 }>;
 
 export function ArticleBrandVisual({ article }: { article: Article }) {
   const visual = brandVisuals[article.variant];
-  const Icon = visual.Icon;
-
   return (
     <div
       className={`brand-visual brand-visual--${article.variant}`}
-      role="img"
-      aria-label={`${visual.name} brand reference for ${article.title}`}
     >
       <div className="brand-visual__topline">
         <span>Case study / {article.articleNumber}</span>
         <span>The Communications Observer</span>
       </div>
 
-      <div className="brand-visual__symbol" aria-hidden="true">
-        <Icon />
+      <div className="brand-visual__symbol">
+        <Image
+          src={assetPath(visual.logo)}
+          alt={`${visual.name} official logo`}
+          width={visual.width}
+          height={visual.height}
+        />
       </div>
 
       <div className="brand-visual__identity">
