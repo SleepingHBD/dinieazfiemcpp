@@ -340,10 +340,6 @@ img { display: block; }
   padding: clamp(1.5rem, 3vw, 2.5rem);
   overflow: hidden;
   background-color: var(--brand-panel);
-  background-image:
-    linear-gradient(var(--brand-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--brand-line) 1px, transparent 1px);
-  background-size: 72px 72px;
   color: var(--brand-ink);
 }
 .brand-visual::after {
@@ -354,7 +350,7 @@ img { display: block; }
   bottom: -38%;
   width: 43%;
   aspect-ratio: 1;
-  border: 1px solid var(--brand-line);
+  border: 0;
   outline: 28px solid color-mix(in srgb, var(--brand-accent) 12%, transparent);
   transform: rotate(14deg);
 }
@@ -364,7 +360,6 @@ img { display: block; }
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: .8rem;
-  border-bottom: 1px solid var(--brand-line);
   color: color-mix(in srgb, var(--brand-ink) 72%, transparent);
   font-size: .55rem;
   font-weight: 600;
@@ -432,11 +427,7 @@ img { display: block; }
   line-height: .7;
 }
 .brand-visual__reference i {
-  display: block;
-  width: 100%;
-  height: 1px;
-  margin: 1.25rem 0 .75rem;
-  background: var(--brand-line);
+  display: none;
 }
 .brand-visual__reference small {
   color: color-mix(in srgb, var(--brand-ink) 68%, transparent);
@@ -1296,7 +1287,6 @@ img { display: block; }
     grid-template-columns: 72px minmax(0, 1fr);
     gap: 1rem;
     padding: 1rem;
-    background-size: 48px 48px;
   }
   .brand-visual__topline { font-size: .42rem; }
   .brand-visual__topline span:last-child { display: none; }
