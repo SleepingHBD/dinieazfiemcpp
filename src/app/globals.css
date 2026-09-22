@@ -213,7 +213,6 @@ img { display: block; }
 /* Quote and footer */
 .pull-quote { position: relative; overflow: hidden; padding-block: clamp(6rem, 11vw, 11rem); background: var(--paper-deep); border-top: 1px solid var(--green); }
 .pull-quote__inner { position: relative; text-align: center; }
-.pull-quote svg { position: absolute; left: 4%; top: -2rem; width: clamp(4rem, 9vw, 8rem); height: auto; color: var(--rust); opacity: .82; stroke-width: .75; }
 .pull-quote blockquote { position: relative; margin: 0 auto; max-width: 1100px; color: var(--green); font-family: var(--serif); font-size: clamp(2.8rem, 5.6vw, 6.5rem); font-weight: 500; line-height: .94; letter-spacing: -.035em; }
 .pull-quote mark { position: relative; color: inherit; background: linear-gradient(transparent 56%, var(--highlight) 56%, var(--highlight) 88%, transparent 88%); }
 .pull-quote p { margin: 2rem 8% 0 auto; width: fit-content; color: var(--rust); font-family: var(--hand); font-size: 1.35rem; transform: rotate(-2deg); }
@@ -568,6 +567,5 @@ img { display: block; }
   .field-card h3 { font-size: clamp(1.85rem, 7.5vw, 2.5rem); }
   .pull-quote { padding-block: 3.5rem; }
   .pull-quote blockquote { font-size: clamp(2rem, 7.8vw, 3rem); line-height: 1.08; text-wrap: balance; }
-  .pull-quote svg { width: 3rem; top: -1.75rem; }
   .pull-quote p { margin: 1.25rem auto 0; font-size: 1.15rem; }
 }
